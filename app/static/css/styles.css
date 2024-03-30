@@ -14,6 +14,10 @@ header {
     
 }
 
+button:hover {
+    background-color: #dddddd;
+}
+
 nav ul {
     list-style: none;
     margin: 0;
@@ -188,13 +192,35 @@ table {
 
 .table-fundo{
     width: 80%;
-  margin: 0 auto;
-  border: 2px solid #dddddd; 
-  padding: 20px;
+    margin: 0 auto;
+    border: 2px solid #dddddd; 
+    padding: 20px;
+}
+.cadastrar_aluno {
+    background-color: #c9cccc;
+    width:400px;
+    height: 300px;
+    margin: 700px;
+    margin-top: 100px;
+    position: relative;
+    padding: 10px;
+    border-radius: 10px;
 }
 
+.container {
+    text-align: left;
+    line-height: 30px;
+}
 
-
+.cadastrar-botao {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    margin: auto;
+}
 .cadastrar_alunos-btn {
     text-align: center;
     margin: auto;
