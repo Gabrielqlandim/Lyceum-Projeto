@@ -192,3 +192,10 @@ table {
   border: 2px solid #dddddd; 
   padding: 20px;
 }
+
+
+
+.cadastrar_alunos-btn {
+    text-align: center;
+    margin: auto;
+}

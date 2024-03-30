@@ -55,7 +55,20 @@ def cadastro_prof(request):
 
 #cadastro de aluno
 def cadastrar_alunos(request):
-    return render(request, 'pages/cadastrar_alunos.html')
+    if request.method == 'GET':
+        if request.user.is_authenticated and request.user.is_active:
+            return render(request, 'pages/cadastrar_alunos.html')
+        else:
+            return HttpResponseRedirect('/')
+    elif request.method == 'POST':
+        aluno_name = request.POST.get('nome-aluno')
+        aluno_turma = request.POST.get('turma-aluno')
+        data_matriculado = request.POST.get('data-aluno')
+
+        aluno = Aluno(nome=aluno_name,serie_turma=aluno_turma,data_matricula=data_matriculado)
+        aluno.save()
+
+        return HttpResponseRedirect('/alunos/')
 
 def alunos(request):
     if request.user.is_authenticated and request.user.is_active:
