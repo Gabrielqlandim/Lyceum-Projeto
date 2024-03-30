@@ -8,33 +8,37 @@
   {% include "pages/header.html" %} {#Menu do programa#} 
 
   <h1>Portal dos Alunos</h1>
-  <section>
-    <div class='grids' onclick="notas()">
-      Notas
-    </div>
-    <div class='grids' onclick="desempenho()">
-      Desempenho
-    </div>
-    <div class='grids' onclick="frequencia()">
-      Frequencia
-    </div>
-    <div class='grids' onclick="avaliacao()">
-      Avaliação
-    </div>
-  </section>
+
+  <div class="table-fundo">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Série/Turma</th>
+          <th>Data de Matrícula</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for aluno in alunos %}
+            <tr>
+                <td>{{ aluno.id_aluno }}</td>
+                <td>{{ aluno.nome }}</td>
+                <td>{{ aluno.serie_turma }}</td>
+                <td>{{ aluno.data_matricula }}</td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <button onclick = "cadastrar()">Cadastrar</button>
+  </div>
 
   <script>
-    function notas() {
-      window.location.replace("{% url 'notas' %}")
-    }
-    function desempenho() {
-      window.location.replace("{% url 'desempenho' %}")
-    }
-    function frequencia() {
-      window.location.replace("{% url 'frequencia' %}")
-    }
-    function avaliacao() {
-      window.location.replace("{% url 'avaliacao' %}")
+    function cadastrar(){
+      window.location.replace("{% url 'cadastrar_alunos' %}")
     }
   </script>
 </body>

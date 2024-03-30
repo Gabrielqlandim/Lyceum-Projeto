@@ -171,3 +171,24 @@ h2{
     border: #000000;
     background-color: #00addf;
 }
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+
+.table-fundo{
+    width: 80%;
+  margin: 0 auto;
+  border: 2px solid #dddddd; 
+  padding: 20px;
+}

@@ -1,9 +1,13 @@
-from django.contrib.auth.models import User
-from django.shortcuts import render
-from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import messages
-from django.contrib.auth import authenticate,logout
+from django.contrib.auth import authenticate
 from django.contrib.auth import login as lg
+from django.contrib.auth import logout
+from django.contrib.auth.models import User
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
+
+from .models import Aluno
+
 
 #home
 def home(request):
@@ -50,12 +54,13 @@ def cadastro_prof(request):
         return HttpResponseRedirect('/')
 
 #cadastro de aluno
-def criar_aluno(request):
-    return
+def cadastrar_alunos(request):
+    return render(request, 'pages/cadastrar_alunos.html')
 
 def alunos(request):
     if request.user.is_authenticated and request.user.is_active:
-        return render(request, 'pages/alunos.html')
+        alunos = Aluno.objects.all()
+        return render(request, 'pages/alunos.html', {'alunos': alunos})
     else:
         return HttpResponseRedirect('/')
 
@@ -83,31 +88,6 @@ def perfil(request):
         return HttpResponseRedirect('/')
 
 #Alunos
-def alunos_notas(request):
-    if request.user.is_authenticated and request.user.is_active:
-            return render(request, 'pages/alunos/notas.html')
-    else:
-        return HttpResponseRedirect('/')
-
-def alunos_desempenho(request):
-    if request.user.is_authenticated and request.user.is_active:
-        return render(request, 'pages/alunos/desempenho.html')
-    else:
-        return HttpResponseRedirect('/')
-        
-
-def alunos_frequencia(request):
-    if request.user.is_authenticated and request.user.is_active:
-        return render(request, 'pages/alunos/frequencia.html')
-    else:
-        return HttpResponseRedirect('/')
-
-def alunos_avaliacao(request):
-    if request.user.is_authenticated and request.user.is_active:
-        return render(request, 'pages/alunos/avaliacao.html')
-    else:
-        return HttpResponseRedirect('/')
-
 def plataforma(request):
     if request.user.is_authenticated:
         return
