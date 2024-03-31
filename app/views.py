@@ -70,6 +70,15 @@ def cadastrar_alunos(request):
 
         return HttpResponseRedirect('/alunos/')
 
+#remover aluno (não funcional)
+    
+def remover(request):
+    if request.method == 'POST':
+        if 'remover' in request.POST:
+            pk = request.POST.get('remover')
+            aluno = Aluno.objects.get(id = pk)
+            aluno.delete()
+
 def alunos(request):
     if request.user.is_authenticated and request.user.is_active:
         alunos = Aluno.objects.all()
