@@ -1,75 +1,4 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    
-}
-
-header {
-    background-color: #3498db;
-    color: #fff;
-    padding: 30px;
-    text-align: center;
-    
-    
-}
-
-button:hover {
-    background-color: #dddddd;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.icon {
-    margin-right: 1rem;
-    
-}
-
-.logo {
-    color: inherit;
-    text-decoration: none;
-    display: inline-block;
-    width: 100%;
-    width: fit-content;
-}
-section{
-    display: flex;
-}
-.grids{
-    width: 320px;
-    height: 500px;
-    border-radius: 20px;
-    background-color: rgb(112, 97, 129);
-    margin: auto;
-    margin-top: 50px;
-    box-sizing: border-box;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    transition: scale(1);
-    text-align: center;
-    line-height: 450px;
-    color: white;
-}
-
-.grids:hover {
-    transform: scale(1.04); 
-    transition: transform 0.3s ease; /
-}
-
+/* Calendário */
 *{
     padding: 0;
     margin: 0;
@@ -159,7 +88,7 @@ h2{
     left: 50%;
     bottom: 7px;
     margin: -3.5px 0 0 -3.5px;
-    background: #00addf;
+    background: #ff7b00;
     display: block;
     position: absolute;
     border-radius: 50%;
@@ -170,6 +99,62 @@ h2{
 .event.dia-atual:after{
     background: #f9f9f9;
 }
+
+/* Calendário */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+
+header {
+    background-color: #db6e34;
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+
+}
+
+button:hover {
+    background-color: #dddddd;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.icon {
+    margin-right: 1rem;
+    
+}
+
+.logo {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    width: fit-content;
+}
+section{
+    display: flex;
+}
+
+/* tabela de alunos*/
 
 #table_freq{
     border: #000000;
@@ -196,6 +181,11 @@ table {
     border: 2px solid #dddddd; 
     padding: 20px;
 }
+
+/* tabela de alunos*/
+
+/* Cadastrar alunos*/
+
 .cadastrar_aluno {
     background-color: #c9cccc;
     width:400px;
@@ -225,3 +215,4 @@ table {
     text-align: center;
     margin: auto;
 }
+/* Cadastrar alunos*/

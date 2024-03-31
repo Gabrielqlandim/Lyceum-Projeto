@@ -70,6 +70,10 @@ def cadastrar_alunos(request):
 
         return HttpResponseRedirect('/alunos/')
 
+#atualizar alunos
+def atualizar_alunos(request):
+    return render(request, 'pages/atualizar_alunos.html')  
+  
 #remover aluno (não funcional)
     
 def remover(request):

@@ -28,7 +28,7 @@
                 <td>{{ aluno.nome }}</td>
                 <td>{{ aluno.serie_turma }}</td>
                 <td>{{ aluno.data_matricula }}</td>
-                <td><button class="cadastrar-botao">Atualizar</button></td>
+                <td><button class="cadastrar-botao" onclick = "atualizar()">Atualizar</button></td>
                 <td><button class="cadastrar-botao">Remover</button></td>
                 </div>
             </tr>
@@ -46,7 +46,8 @@
       window.location.replace("{% url 'cadastrar_alunos' %}")
     }
     function atualizar() {
-
+      window.location.replace("{% url 'atualizar_alunos' %}")
+      
     }
     function remover() {
       
