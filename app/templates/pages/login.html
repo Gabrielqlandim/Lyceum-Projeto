@@ -13,7 +13,7 @@
     <style>
         body {
             background-color: blue;
-            background-image: url('{% static "css/fundo.jpg" %}');
+            background-image: url('{% static "css/fundo.png" %}');
         }
 
         section {
@@ -29,12 +29,12 @@
         }
 
         header {
-            color: white;
+            color: #ff7b00;
             font-size: 45px;
             font-family: "Madimi One", sans-serif;
             text-align: center;
             margin-top: 30px;
-            text-shadow: 3px 3px 5px black;
+            text-shadow: 3px 3px 3px rgb(0, 0, 0);
         }
 
         .login-input {
@@ -80,13 +80,14 @@
 
     <section>
         <br><br>
-        <form onsubmit="clicar(); return false;" action  = "{% url 'login' %}" method="POST">{% csrf_token %}
+        <form onsubmit="clicar(); return false;" action="{% url 'login' %}" method="POST">{% csrf_token %}
             <div>
                 <p>Nome: <input type="text" class="login-input" id="email" name="name">
             </div>
             </p>
             <div>
-                <p>Senha: <input type="password" class="login-input" id="senha" onkeydown="verificarEnter(event)" name="senha">
+                <p>Senha: <input type="password" class="login-input" id="senha" onkeydown="verificarEnter(event)"
+                        name="senha">
             </div>
             </p>
             <p>
