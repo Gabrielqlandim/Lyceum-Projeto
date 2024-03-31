@@ -156,10 +156,6 @@ section{
 
 /* tabela de alunos*/
 
-#table_freq{
-    border: #000000;
-    background-color: #00addf;
-}
 table {
     width: 100%;
     border-collapse: collapse;
