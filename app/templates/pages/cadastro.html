@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +45,7 @@
 
         #login-btn {
             margin-left: 395px;
-            margin-top: -50px;
+            margin-top: -59px;
             background-color: #4CAF50;
             color: white;
             border: none;
@@ -65,10 +66,12 @@
             padding: 5px 10px;
             background-color: #c5c5b7;
         }
-        #botao, #login-btn {
-    display: inline-block;
-    vertical-align: middle;
-}
+
+        #botao,
+        #login-btn {
+            display: inline-block;
+            vertical-align: middle;
+        }
     </style>
     <title>Cadastrar professor</title>
 </head>
@@ -79,14 +82,14 @@
         {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-            <p id='alertmessage'{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+            <p id='alertmessage' {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
             {% endfor %}
         </ul>
-        {% endif %}        
+        {% endif %}
     </div>
     <section>
         <br><br>
-        <form action  = "{% url 'cadastro' %}" method="POST">{% csrf_token %}
+        <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
             <div>
                 <p>Nome : <input type="text" class="cadastro-input" id="nome" name="name" required></p>
             </div>
@@ -98,13 +101,13 @@
                         onkeydown="verificarEnter(event)" required></p>
             </div>
             <p>
-                
-                <input type="submit" value="Cadastrar" id="botao" >
-                
+
+                <input type="submit" value="Cadastrar" id="botao">
+
             </p>
-            
+
         </form>
-        
+
         <a id="login-btn" onclick="logar()">Log in</a>
 
 
