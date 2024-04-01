@@ -38,17 +38,21 @@
   <div class="cadastrar_alunos-btn">
     <button class="cadastrar-botao" onclick = "cadastrar()">Cadastrar</button>
   </div>
+  <br>
+  <br>
+  <div class="cadastrar_alunos-btn">
+    <button class="cadastrar-botao" onclick = "editar()">Editar</button>
+  </div>
 
   <script>
     function cadastrar(){
       window.location.replace("{% url 'cadastrar_alunos' %}")
     }
+    function editar() {
+      window.location.replace("{% url 'editar_alunos' %}")
+    }
     function atualizar() {
       window.location.replace("{% url 'atualizar_alunos' %}")
-      
-    }
-    function remover() {
-      
     }
   </script>
 </body>
