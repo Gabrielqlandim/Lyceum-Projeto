@@ -1,0 +1,25 @@
+{% include "pages/head.html" %}
+</head>
+<body>
+    {% include "pages/header.html" %} {#Menu do programa#}
+    <div class="cadastrar_aluno">
+        <div class="container">
+            <br><br>
+            <form method="POST">{% csrf_token %}
+                    <p>Nome: <input type="text" class="cadastro-input" id="nome-aluno" name="nome-aluno" required></p>
+                    <p>Turma: <select name="turma-aluno" id="turma-aluno" required>
+                        <option value="1-A">1-A</option>
+                        <option value="2-A">2-A</option>
+                        <option value="3-A">3-A</option>
+                        <option value="4-A">4-A</option>
+                        <option value="5-A">5-A</option>
+                    </select></p>
+                    <p>Data de Matricula: <input type="date" class="cadastro-input" id="data-aluno" name="data-aluno" required></p>
+                    <br>
+                    <p><input type="submit" value="Cadastrar" class="cadastrar-botao"></p>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

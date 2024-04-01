@@ -57,7 +57,7 @@ def cadastro_prof(request):
 def cadastrar_alunos(request):
     if request.method == 'GET':
         if request.user.is_authenticated and request.user.is_active:
-            return render(request, 'pages/cadastrar_alunos.html')
+            return render(request, 'pages/alunos/cadastrar_alunos.html')
         else:
             return HttpResponseRedirect('/')
     elif request.method == 'POST':
@@ -74,7 +74,7 @@ def cadastrar_alunos(request):
 def atualizar_alunos(request):
     if request.method == 'GET':
         if request.user.is_authenticated and request.user.is_active:
-            return render(request, 'pages/atualizar_alunos.html') 
+            return render(request, 'pages/alunos/atualizar_alunos.html') 
 
 #editar alunos (em processo de desenvolvimento, não funcional)
     
@@ -82,7 +82,7 @@ def editar_alunos(request):
     if request.method == 'GET':
         if request.user.is_authenticated and request.user.is_active:
             alunos = Aluno.objects.all()
-            return render(request, 'pages/editar_alunos.html', {'alunos': alunos})
+            return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos})
         else:
             return HttpResponseRedirect('/')
     elif request.method == 'POST':

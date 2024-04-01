@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let firstDayOfWeek = new Date(ano,mes,1).getDay()-1;
         let getLastDayThisMonth = new Date(ano,mes+1,0).getDate();
 
-        for(var i = -firstDayOfWeek, index = 0; i <(42 - firstDayOfWeek); i++,index++){
+        for(var i = 1-firstDayOfWeek, index = 0; i <(42 - firstDayOfWeek); i++,index++){
             let dt = new Date(ano,mes,i);
             let dayTable = tableDays.getElementsByTagName('td')[index];
             dayTable.innerHTML = dt.getDate();

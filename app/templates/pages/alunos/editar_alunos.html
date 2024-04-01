@@ -1,0 +1,51 @@
+{% include "pages/head.html" %} {#Head de todas as páginas estão em head.html#}
+
+<title>Editar Alunos</title> {#Aluno#}
+</head>
+
+<body>
+
+  {% include "pages/header.html" %} {#Menu do programa#} 
+  <br><br>
+  <div class="table-fundo">
+    <form method="POST" action="{% url 'editar_alunos' %}">{% csrf_token %}
+        <table>
+        <thead>
+            <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Série/Turma</th>
+            <th>Data de Matrícula</th>
+            <th></th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aluno in alunos %}
+                <tr>
+                    <td>{{ aluno.id_aluno }}</td>
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.serie_turma }}</td>
+                    <td>{{ aluno.data_matricula }}</td>
+                    <td><button class="cadastrar-botao" name="atualizar" value="{{ aluno.id_aluno }}">Atualizar</button></td>
+                    <td><button class="cadastrar-botao" name="remover" value="{{ aluno.id_aluno }}">Remover</button></td>
+                    </div>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </form>
+  </div>
+  <br>
+  <div class="alunos-buttons">
+    <button class="cadastrar-botao" onclick = "concluir()">Concluir</button>
+  </div>
+
+  <script>
+    function concluir(){
+      window.location.replace("{% url 'alunos' %}")
+    }
+  </script>
+</body>
+
+</html>
