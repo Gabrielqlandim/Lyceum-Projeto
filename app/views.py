@@ -72,7 +72,9 @@ def cadastrar_alunos(request):
     
 #atualizar alunos
 def atualizar_alunos(request):
-    return render(request, 'pages/atualizar_alunos.html') 
+    if request.method == 'GET':
+        if request.user.is_authenticated and request.user.is_active:
+            return render(request, 'pages/atualizar_alunos.html') 
 
 #editar alunos (em processo de desenvolvimento, não funcional)
     
@@ -84,21 +86,16 @@ def editar_alunos(request):
         else:
             return HttpResponseRedirect('/')
     elif request.method == 'POST':
-        if 'atualizar' in request.POST:
-            pk = request.POST.get('atualizar')
-            aluno = Aluno.objects.get(id=pk)
+        if 'remover' in request.POST:
+            pk = request.POST.get('remover')
+            aluno = Aluno.objects.get(id_aluno=pk)
             aluno.delete()
+            return HttpResponseRedirect('/editar_alunos/')
 
 def alunos(request):
     if request.user.is_authenticated and request.user.is_active:
         alunos = Aluno.objects.all()
         return render(request, 'pages/alunos.html', {'alunos': alunos})
-
-    elif request.method == 'POST':
-        if 'deletar' in request.POST:
-            pk = request.POST.get('deletar')
-            aluno = Aluno.objects.get(id = pk)
-            aluno.delete()
     else:
         return HttpResponseRedirect('/')
     

@@ -14,9 +14,7 @@
           <th>ID</th>
           <th>Nome</th>
           <th>Série/Turma</th>
-          <th>Data de Matrícula</th>
-          <th></th>
-          <th></th>
+          <th>Data de Matrícula</th>        
         </tr>
       </thead>
       <tbody>
@@ -26,24 +24,17 @@
                 <td>{{ aluno.nome }}</td>
                 <td>{{ aluno.serie_turma }}</td>
                 <td>{{ aluno.data_matricula }}</td>
-                <td><button class="cadastrar-botao" onclick = "atualizar()">Atualizar</button></td>
-                <td><button class="cadastrar-botao">Remover</button></td>
                 </div>
             </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
-  <br>
-  <div class="cadastrar_alunos-btn">
-    <button class="cadastrar-botao" onclick = "cadastrar()">Cadastrar</button>
+  <br><br>
+  <div class="alunos-buttons">
+      <button class="cadastrar-botao" onclick = "cadastrar()">Cadastrar</button>
+      <button class="cadastrar-botao" onclick = "editar()">Editar</button>
   </div>
-  <br>
-  <br>
-  <div class="cadastrar_alunos-btn">
-    <button class="cadastrar-botao" onclick = "editar()">Editar</button>
-  </div>
-
   <script>
     function cadastrar(){
       window.location.replace("{% url 'cadastrar_alunos' %}")

@@ -205,10 +205,13 @@ table {
     border-radius: 5px;
     padding: 5px 10px;
     background-color: #f2f2f2;
-    margin: auto;
-}
-.cadastrar_alunos-btn {
     text-align: center;
-    margin: auto;
+    margin-right: 20px;
 }
 /* Cadastrar alunos*/
+
+.alunos-buttons {
+    margin-left: 45%;
+    display: inline-flex;
+    padding: 10x;
+}
