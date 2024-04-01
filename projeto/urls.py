@@ -12,6 +12,6 @@ urlpatterns = [
     path('cadastro/', views.cadastro_prof, name = 'cadastro'),
     path('cadastrar_alunos/', views.cadastrar_alunos, name = 'cadastrar_alunos'),
     path('atualizar_alunos/', views.atualizar_alunos, name = 'atualizar_alunos'),
-
+    path('editar_alunos/', views.editar_alunos, name= 'editar_alunos'),
+    
 ]
-
