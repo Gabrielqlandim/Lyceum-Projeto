@@ -69,26 +69,40 @@ def cadastrar_alunos(request):
         aluno.save()
 
         return HttpResponseRedirect('/alunos/')
-
+    
 #atualizar alunos
 def atualizar_alunos(request):
-    return render(request, 'pages/atualizar_alunos.html')  
-  
-#remover aluno (não funcional)
+    return render(request, 'pages/atualizar_alunos.html') 
+
+#editar alunos (em processo de desenvolvimento, não funcional)
     
-def remover(request):
-    if request.method == 'POST':
-        if 'remover' in request.POST:
-            pk = request.POST.get('remover')
-            aluno = Aluno.objects.get(id = pk)
+def editar_alunos(request):
+    if request.method == 'GET':
+        if request.user.is_authenticated and request.user.is_active:
+            alunos = Aluno.objects.all()
+            return render(request, 'pages/editar_alunos.html', {'alunos': alunos})
+        else:
+            return HttpResponseRedirect('/')
+    elif request.method == 'POST':
+        if 'atualizar' in request.POST:
+            pk = request.POST.get('atualizar')
+            aluno = Aluno.objects.get(id=pk)
             aluno.delete()
 
 def alunos(request):
     if request.user.is_authenticated and request.user.is_active:
         alunos = Aluno.objects.all()
         return render(request, 'pages/alunos.html', {'alunos': alunos})
+
+    elif request.method == 'POST':
+        if 'deletar' in request.POST:
+            pk = request.POST.get('deletar')
+            aluno = Aluno.objects.get(id = pk)
+            aluno.delete()
     else:
         return HttpResponseRedirect('/')
+    
+    
 
 def disciplinas(request):
     if request.user.is_authenticated and request.user.is_active:
