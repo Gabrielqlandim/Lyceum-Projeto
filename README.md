@@ -30,10 +30,6 @@ Quadro Jira:
 
   ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/91d39871-bbaa-4171-bade-6ffcacd5dc76)
 
-Backlog Jira:
-
-  
-
 ## Equipe
 - [Felipe Albuquerque](https://github.com/FelipeARFranca) - farf@cesar.school 📩
 - [Felipe Matias](https://github.com/Zibec) - fmfs@cesar.school 📩
