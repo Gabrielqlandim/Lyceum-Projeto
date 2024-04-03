@@ -88,19 +88,36 @@ table {
 /* Cadastrar alunos*/
 
 .cadastrar_aluno {
-    background-color: #c9cccc;
-    width:400px;
-    height: 300px;
-    margin: 700px;
-    margin-top: 100px;
-    position: relative;
-    padding: 10px;
+    background-color: #cbcaca;
+    width: 500px;
+    height: 420px;
+    margin: 50px auto;
+    padding: 20px;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .container {
     text-align: left;
-    line-height: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    float: right;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
 }
 
 .cadastrar-botao {
@@ -112,6 +129,11 @@ table {
     background-color: #f2f2f2;
     text-align: center;
     margin-right: 20px;
+}
+
+#tittle-cadastro {
+    text-align: center;
+    margin-bottom: 20px; 
 }
 /* Cadastrar alunos*/
 
