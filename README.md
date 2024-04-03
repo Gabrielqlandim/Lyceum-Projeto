@@ -32,7 +32,7 @@ Quadro Jira:
 
 Backlog Jira:
 
-  ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/b5d31847-6aff-425f-b327-c53e924d8ac3)
+  
 
 ## Equipe
 - [Felipe Albuquerque](https://github.com/FelipeARFranca) - farf@cesar.school 📩
