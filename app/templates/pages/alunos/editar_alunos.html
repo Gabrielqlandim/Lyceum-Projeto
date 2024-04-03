@@ -28,7 +28,7 @@
                     <td>{{ aluno.serie_turma }}</td>
                     <td>{{ aluno.data_matricula }}</td>
                     <td><button class="cadastrar-botao" name="atualizar" value="{{ aluno.id_aluno }}">Atualizar</button></td>
-                    <td><button class="cadastrar-botao" name="remover" value="{{ aluno.id_aluno }}">Remover</button></td>
+                    <td><button class="cadastrar-botao" name="remover" value="{{ aluno.id_aluno }}" onclick="return confirmarExclusao()">Remover</button></td>
                     </div>
                 </tr>
             {% endfor %}
@@ -44,6 +44,9 @@
   <script>
     function concluir(){
       window.location.replace("{% url 'alunos' %}")
+    }
+    function confirmarExclusao() {
+      return confirm("Tem certeza que deseja excluir este aluno?");
     }
   </script>
 </body>
