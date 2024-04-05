@@ -32,7 +32,6 @@ jobs:
 
       - name: Cleaning testing files
         run: |
-          cd StudySchool-Projeto/
           rm db.sqlite3
           rm .env
           cd ..
@@ -41,7 +40,6 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
-          cd StudySchool-Projeto/
           zip release.zip ./* -r
           cd ..
           mv StudySchool-Projeto/release.zip .
