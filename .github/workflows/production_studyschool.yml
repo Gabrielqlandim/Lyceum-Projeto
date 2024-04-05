@@ -42,7 +42,7 @@ jobs:
         run: |
           zip release.zip ./* -r
           cd ..
-          mv StudySchool-Projeto/release.zip .
+          mv release.zip .
     
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
