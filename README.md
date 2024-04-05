@@ -31,15 +31,16 @@ O Study School é um projeto Django que visa criar uma plataforma de gerenciamen
 - [Quadro Jira](https://zibec.atlassian.net/jira/software/projects/CEBIZ/boards/2?atlOrigin=eyJpIjoiNWE5YjNhNmM4NjI1NDBlM2FhMjllZDU5NTFhOTYxYmMiLCJwIjoiaiJ9)
 - [Backlog Jira](https://zibec.atlassian.net/jira/software/projects/CEBIZ/boards/2/backlog?atlOrigin=eyJpIjoiOWQxZjk5OWVjOGNjNGMzYzhlOTFlNGIzMmNmNzQ1ZTAiLCJwIjoiaiJ9)
 - [Diagrama de atividades](https://drive.google.com/file/d/1oSLXnrXqSW-eNy4NOCYjdf2zKC5ROQ9V/view?usp=sharing)
-- [Relatório da programação em par](https://docs.google.com/document/d/16EpwHZ0OlmUOi7epajKD1i2yXCiQcODgXIGaLA9vPCc/edit?usp=sharing)
+- [Relatório da Programação em Par](https://docs.google.com/document/d/16EpwHZ0OlmUOi7epajKD1i2yXCiQcODgXIGaLA9vPCc/edit?usp=sharing)
 
 Quadro Jira:
-
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/74963264/744becf7-d5a8-4974-bdab-21cafca9b7f7)
 
 Backlog Jira: 
-
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/74963264/6b41b4f8-8e08-44ff-9e40-e187ca5ddfce)
+
+Issue/Bug Tracker:
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142419701/327adebc-1168-44b6-9877-f28441213c1a)
 
 
 ## Equipe
