@@ -37,7 +37,7 @@ Quadro Jira:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/74963264/76292a90-cfb2-4916-a0a3-6d26b1697316)
 
 Backlog Jira: 
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/74963264/6b41b4f8-8e08-44ff-9e40-e187ca5ddfce)
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/74963264/e1632af8-a90a-4e27-80e7-ca514924ea19)
 
 Issue/Bug Tracker:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142419701/327adebc-1168-44b6-9877-f28441213c1a)
