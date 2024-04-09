@@ -20,18 +20,19 @@ O Study School é um projeto Django que visa criar uma plataforma de gerenciamen
 
 ## Links Importantes
 
-### Entrega 01
+## Entrega 01
 - [Figma](https://www.figma.com/file/FCG2dbTLWFr8CjhgWggdRB/Study-School?type=design&node-id=0%3A1&mode=design&t=UFXgLshoyp2FbmAq-1)
 - [Screen Cast]( https://youtu.be/VUmMxBbVBKc )
 - [Quadro Jira](https://zibec.atlassian.net/jira/software/projects/CEBIZ/boards/2?atlOrigin=eyJpIjoiNWE5YjNhNmM4NjI1NDBlM2FhMjllZDU5NTFhOTYxYmMiLCJwIjoiaiJ9)
 - [Backlog Jira](https://zibec.atlassian.net/jira/software/projects/CEBIZ/boards/2/backlog?atlOrigin=eyJpIjoiOWQxZjk5OWVjOGNjNGMzYzhlOTFlNGIzMmNmNzQ1ZTAiLCJwIjoiaiJ9)
 
-### Entrega 02
+## Entrega 02
 - [Screen Cast](https://youtu.be/aghYdCQT0us)
 - [Quadro Jira](https://zibec.atlassian.net/jira/software/projects/CEBIZ/boards/2?atlOrigin=eyJpIjoiNWE5YjNhNmM4NjI1NDBlM2FhMjllZDU5NTFhOTYxYmMiLCJwIjoiaiJ9)
 - [Backlog Jira](https://zibec.atlassian.net/jira/software/projects/CEBIZ/boards/2/backlog?atlOrigin=eyJpIjoiOWQxZjk5OWVjOGNjNGMzYzhlOTFlNGIzMmNmNzQ1ZTAiLCJwIjoiaiJ9)
 - [Diagrama de atividades](https://drive.google.com/file/d/1oSLXnrXqSW-eNy4NOCYjdf2zKC5ROQ9V/view?usp=sharing)
 - [Relatório da Programação em Par](https://docs.google.com/document/d/16EpwHZ0OlmUOi7epajKD1i2yXCiQcODgXIGaLA9vPCc/edit?usp=sharing)
+- [Website Azure StudySchool](https://studyschool.azurewebsites.net/)
 
 Quadro Jira:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/74963264/76292a90-cfb2-4916-a0a3-6d26b1697316)
@@ -42,6 +43,8 @@ Backlog Jira:
 Issue/Bug Tracker:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142419701/327adebc-1168-44b6-9877-f28441213c1a)
 
+### Instruções de Acesso
+Para acessar e utilizar o Study School, clique no link acima e depois no botão "cadastro" para criar uma conta no sistema. Após isso, você será redirecionado para a página de login, onde deverá preencher suas informações de acordo com o cadastro recém-realizado. Assim, você conseguirá acessar a plataforma do StudySchool com sucesso.
 
 ## Equipe
 - [Felipe Albuquerque](https://github.com/FelipeARFranca) - farf@cesar.school 📩
