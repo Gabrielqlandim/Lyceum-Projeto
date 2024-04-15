@@ -11,17 +11,10 @@
     <table id="alunotable">
       <thead>
         <tr>
-<<<<<<< HEAD
           <th onclick="sort(0)" id ="th-table">ID</th>
           <th onclick="sort(1)" id ="th-table">Nome</th>
           <th onclick="sort(2)" id ="th-table">Série/Turma</th>
           <th>Data de Matrícula</th>        
-=======
-          <th>ID</th>
-          <th>Nome</th>
-          <th onclick="filtrar_serie()">Série/Turma</th>
-          <th onclick="filtar_ano()">Data de Matrícula</th>        
->>>>>>> b3f86157b6c5207f740105f8764cc4468acfe374
         </tr>
       </thead>
       <tbody>
@@ -53,7 +46,6 @@
     function atualizar() {
       window.location.replace("{% url 'atualizar_alunos' %}")
     }
-<<<<<<< HEAD
 
     function sort(n) {
       var table, rows, organizando, pode_organizar, direction, i, linha1, linha2, organizar_count = 0;
@@ -94,12 +86,6 @@
           }
         }
       }
-=======
-    function filtrar_serie(){
-      alert("Sesgo")}
-    function filtar_ano(){
-      alert("POr ano hein")
->>>>>>> b3f86157b6c5207f740105f8764cc4468acfe374
     }
   </script>
 </body>
