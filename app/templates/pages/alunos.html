@@ -13,8 +13,8 @@
         <tr>
           <th>ID</th>
           <th>Nome</th>
-          <th>Série/Turma</th>
-          <th>Data de Matrícula</th>        
+          <th onclick="filtrar_serie()">Série/Turma</th>
+          <th onclick="filtar_ano()">Data de Matrícula</th>        
         </tr>
       </thead>
       <tbody>
@@ -44,6 +44,11 @@
     }
     function atualizar() {
       window.location.replace("{% url 'atualizar_alunos' %}")
+    }
+    function filtrar_serie(){
+      alert("Sesgo")}
+    function filtar_ano(){
+      alert("POr ano hein")
     }
   </script>
 </body>
