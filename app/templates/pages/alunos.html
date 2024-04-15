@@ -8,12 +8,12 @@
   {% include "pages/header.html" %} {#Menu do programa#} 
   <br><br>
   <div class="table-fundo">
-    <table>
+    <table id="alunotable">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Série/Turma</th>
+          <th onclick="sort(0)" id ="th-table">ID</th>
+          <th onclick="sort(1)" id ="th-table">Nome</th>
+          <th onclick="sort(2)" id ="th-table">Série/Turma</th>
           <th>Data de Matrícula</th>        
         </tr>
       </thead>
@@ -35,6 +35,7 @@
       <button class="cadastrar-botao" onclick = "cadastrar()">Cadastrar</button>
       <button class="cadastrar-botao" onclick = "editar()">Editar</button>
   </div>
+
   <script>
     function cadastrar(){
       window.location.replace("{% url 'cadastrar_alunos' %}")
@@ -44,6 +45,47 @@
     }
     function atualizar() {
       window.location.replace("{% url 'atualizar_alunos' %}")
+    }
+
+    function sort(n) {
+      var table, rows, organizando, pode_organizar, direction, i, linha1, linha2, organizar_count = 0;
+      table = document.getElementById("alunotable");
+      organizando = true;
+      direction = "asc";
+
+      while(organizando) {
+        organizando = false;
+        rows = table.rows;
+
+        for (i = 1; i < (rows.length - 1); i++) {
+          pode_organizar = false;
+
+          linha1 = rows[i].getElementsByTagName("TD")[n];
+          linha2 = rows[i+1].getElementsByTagName("TD")[n];
+
+          if(direction == "asc") {
+            if(linha1.innerHTML.toLowerCase() > linha2.innerHTML.toLowerCase()) {
+              pode_organizar = true;
+              break;
+            }
+          } else if (direction == "desc") {
+            if(linha1.innerHTML.toLowerCase() < linha2.innerHTML.toLowerCase()) {
+              pode_organizar = true;
+              break;
+            }
+          }
+        }
+        if (pode_organizar) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          organizando = true;
+          organizar_count++;
+        } else {
+          if (organizar_count == 0 && direction == "asc") {
+            direction = "desc";
+            organizando = true;
+          }
+        }
+      }
     }
   </script>
 </body>

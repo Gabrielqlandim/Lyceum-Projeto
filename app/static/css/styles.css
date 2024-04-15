@@ -142,3 +142,7 @@ table {
     display: inline-flex;
     padding: 10x;
 }
+
+#th-table{
+    cursor: pointer;
+}
