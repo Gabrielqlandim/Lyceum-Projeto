@@ -128,8 +128,6 @@ def avisosCalendario(request):
         aviso = Aviso(mensagem = mensagem,turma=aluno_turma,data_aviso=data_aviso)
         aviso.save()
 
-        return HttpResponseRedirect('/calendario_academico/')
-
 
 def perfil(request):
     if request.method == 'GET':
@@ -147,4 +145,13 @@ def plataforma(request):
     if request.user.is_authenticated:
         return
     else:
+        return HttpResponseRedirect('/')
+
+def avisos(request):
+     if request.user.is_authenticated and request.user.is_active:
+            avisos = Aviso.objects.all()
+            
+            return render(request, 'pages/avisos.html', {'avisos': avisos})
+
+     else:
         return HttpResponseRedirect('/')

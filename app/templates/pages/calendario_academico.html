@@ -172,7 +172,7 @@
 
         #meuBotao {
             position: fixed;
-            bottom: 120px;
+            bottom: 160px;
         }
     </style>
 </head>
@@ -215,7 +215,7 @@
         }
 
         function exibirAlerta() {
-            alert("fodase ");
+            window.location.replace("{% url 'avisos' %}")
         }
 
         const dias = document.querySelectorAll(".days");
