@@ -32,10 +32,15 @@
         }
 
         .wrapper {
-            width: 450px;
+            width: 500px;
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
         }
 
         .wrapper span {
@@ -76,7 +81,7 @@
         }
 
         .calendar {
-            padding: 5px ;
+            padding: 5px;
         }
 
         .calendar ul {
@@ -151,10 +156,26 @@
             border-radius: 5px;
             font-size: 1.6rem;
         }
+
+        .meu-botao-estilo {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .meu-botao-estilo:hover {
+            background-color: #0056b3;
+        }
+
+        #meuBotao {
+            position: fixed;
+            bottom: 120px;
+        }
     </style>
 </head>
-
-
 
 <body>
 
@@ -183,11 +204,16 @@
             </ul>
             <ul class="days"></ul>
         </div>
+        <button id="meuBotao" class="meu-botao-estilo" onclick="criarAviso()">Meu Botão</button>
+
     </div>
 
-
-
     <script>
+
+        function criarAviso() {
+            window.location.replace("{% url 'avisosCalendario' %}")
+        }
+
         const daysTag = document.querySelector(".days"),
             currentDate = document.querySelector(".current-date"),
             prevNextIcon = document.querySelectorAll(".icons span");

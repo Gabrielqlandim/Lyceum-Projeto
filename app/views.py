@@ -113,6 +113,12 @@ def calendario_academico(request):
     else:
         return HttpResponseRedirect('/')
 
+def avisosCalendario(request):
+    if request.user.is_authenticated and request.user.is_active:
+        return render(request, 'pages/avisosCalendario.html')
+    else:
+        return HttpResponseRedirect('/')
+
 def perfil(request):
     if request.method == 'GET':
         if request.user.is_authenticated and request.user.is_active:
