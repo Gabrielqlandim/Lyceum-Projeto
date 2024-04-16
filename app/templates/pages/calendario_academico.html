@@ -214,6 +214,17 @@
             window.location.replace("{% url 'avisosCalendario' %}")
         }
 
+        function exibirAlerta() {
+            alert("fodase ");
+        }
+
+        const dias = document.querySelectorAll(".days");
+        dias.forEach(dia => {
+            dia.addEventListener("click", () => {
+                exibirAlerta(); // Chama a função para exibir o alerta "fodase" quando clicar em qualquer dia
+            });
+        });;
+
         const daysTag = document.querySelector(".days"),
             currentDate = document.querySelector(".current-date"),
             prevNextIcon = document.querySelectorAll(".icons span");
