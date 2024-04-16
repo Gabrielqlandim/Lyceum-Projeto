@@ -7,6 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from .models import Aluno
+from .models import Aviso
 
 
 #home
@@ -70,11 +71,6 @@ def cadastrar_alunos(request):
 
         return HttpResponseRedirect('/alunos/')
 
-def avisosCalendario(request):
-    if request.user.is_authenticated and request.user.is_active:
-        return render(request, 'pages/avisosCalendario.html')
-    else:
-        return HttpResponseRedirect('/')    
 #atualizar alunos
 def atualizar_alunos(request):
     if request.method == 'GET':
@@ -118,6 +114,21 @@ def calendario_academico(request):
     else:
         return HttpResponseRedirect('/')
 
+def avisosCalendario(request):
+    if request.method == 'GET':
+        if request.user.is_authenticated and request.user.is_active:
+            return render(request, 'pages/avisosCalendario.html')
+        else:
+            return HttpResponseRedirect('/')   
+    elif  request.method == 'POST':
+        mensagem = request.POST.get('mensagem')
+        aluno_turma = request.POST.get('turma')
+        data_aviso = request.POST.get('data-aviso')
+
+        aviso = Aviso(mensagem = mensagem,turma=aluno_turma,data_aviso=data_aviso)
+        aviso.save()
+
+        return HttpResponseRedirect('/calendario_academico/')
 
 
 def perfil(request):
