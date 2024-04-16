@@ -69,7 +69,12 @@ def cadastrar_alunos(request):
         aluno.save()
 
         return HttpResponseRedirect('/alunos/')
-    
+
+def avisosCalendario(request):
+    if request.user.is_authenticated and request.user.is_active:
+        return render(request, 'pages/avisosCalendario.html')
+    else:
+        return HttpResponseRedirect('/')    
 #atualizar alunos
 def atualizar_alunos(request):
     if request.method == 'GET':
@@ -113,11 +118,7 @@ def calendario_academico(request):
     else:
         return HttpResponseRedirect('/')
 
-def avisosCalendario(request):
-    if request.user.is_authenticated and request.user.is_active:
-        return render(request, 'pages/avisosCalendario.html')
-    else:
-        return HttpResponseRedirect('/')
+
 
 def perfil(request):
     if request.method == 'GET':

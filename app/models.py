@@ -5,3 +5,8 @@ class Aluno(models.Model):
     nome = models.CharField(max_length=120, null=False)
     serie_turma = models.CharField(max_length=8, null=False)
     data_matricula = models.DateField()
+
+class Aviso(models.Model):
+    mensagem = models.TextField()
+    data_aviso = models.DateField()
+    turma = models.CharField(max_length=50)
