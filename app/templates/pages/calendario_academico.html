@@ -208,18 +208,18 @@
             font-size: 2rem;
 
         }
-
+        
         #theme {
             display: flex;
-
             justify-content: center;
+            align-items: center;
             text-decoration: none;
-            /* Remove a decoração de link */
             color: white;
-            /* Define a cor do texto como branco */
-            margin-top: 2.5rem;
-            font-size: 2.6rem;
+            margin-top: 1.6rem;
+            font-size: 2.4rem;
             font-family: 'lato', sans-serif;
+            margin-bottom: -5px;
+            
         }
 
         #theme:hover {
@@ -228,6 +228,30 @@
 
         .logo {
             margin-right: 1rem;
+        }
+        
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            margin-right: 2px;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 12px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 18px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        nav a:hover{
+            color: rgb(0, 60, 255);
+
         }
     </style>
 
@@ -239,7 +263,16 @@
         <a href="{% url 'home' %}" id="theme">
             <i class="fa-solid fa-school icon logo"></i>Study School
         </a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'alunos' %}">Alunos</a></li>
+                <li><a href="{% url 'disciplinas' %}">Disciplinas</a></li>
+                <li><a href="{% url 'calendario_academico' %}">Calendário Acadêmico</a></li>
+                <li><a href="{% url 'perfil' %}">Perfil do professor</a></li>
+            </ul>
+        </nav>
     </div>
+    
     <div id="container">
         <div id="header">
             <div id="monthDisplay"></div>
@@ -269,9 +302,9 @@
     </div>
 
     <div id="newEventModal">
-        <h2>New Evente</h2>
+        <h2>Novo evento</h2>
 
-        <input id="eventTitleInput" placeholder="Event Title" />
+        <input id="eventTitleInput" placeholder="Título do evento" />
 
         <button id="saveButton"> Salvar</button>
         <button id="cancelButton">Cancelar</button>
