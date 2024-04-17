@@ -75,7 +75,9 @@ def cadastrar_alunos(request):
 def atualizar_alunos(request):
     if request.method == 'GET':
         if request.user.is_authenticated and request.user.is_active:
-            return render(request, 'pages/alunos/atualizar_alunos.html') 
+            id = request.GET['atualizar']
+            return render(request, 'pages/alunos/atualizar_alunos.html', {'id_aluno': id})
+
 
 #editar alunos (em processo de desenvolvimento, não funcional)
     
@@ -92,6 +94,8 @@ def editar_alunos(request):
             aluno = Aluno.objects.get(id_aluno=pk)
             aluno.delete()
             return HttpResponseRedirect('/editar_alunos/')
+        if 'atualizar' in request.POST:
+            return render(request, 'pages/alunos/atualizar_alunos/')
 
 def alunos(request):
     if request.user.is_authenticated and request.user.is_active:

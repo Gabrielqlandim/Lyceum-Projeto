@@ -3,6 +3,33 @@
 </head>
 <body>
     {% include "pages/header.html" %} {#Menu do programa#}
-    <h1>Atualizar Alunos!</h1>
+    <h1>Atualizar Alunos! {{id_aluno}}</h1>
+    <div class="cadastrar_aluno">
+        <div class="container">
+            <h2 id="tittle-cadastro">Atualizar Aluno</h2><br>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nome-aluno">Nome do Aluno:</label>
+                    <input type="text" class="form-control" id="nome-aluno" name="nome-aluno" placeholder="Digite o nome do aluno" required>
+                </div>
+                <div class="form-group">
+                    <label for="turma-aluno">Turma:</label>
+                    <select name="turma-aluno" id="turma-aluno" class="form-control" required>
+                        <option value="1-A">1-A</option>
+                        <option value="2-A">2-A</option>
+                        <option value="3-A">3-A</option>
+                        <option value="4-A">4-A</option>
+                        <option value="5-A">5-A</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="data-aluno">Data de Matricula:</label>
+                    <input type="date" class="form-control" id="data-aluno" name="data-aluno" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
