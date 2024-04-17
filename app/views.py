@@ -114,20 +114,6 @@ def calendario_academico(request):
     else:
         return HttpResponseRedirect('/')
 
-def avisosCalendario(request):
-    if request.method == 'GET':
-        if request.user.is_authenticated and request.user.is_active:
-            return render(request, 'pages/avisosCalendario.html')
-        else:
-            return HttpResponseRedirect('/')   
-    elif  request.method == 'POST':
-        mensagem = request.POST.get('mensagem')
-        aluno_turma = request.POST.get('turma')
-        data_aviso = request.POST.get('data-aviso')
-
-        aviso = Aviso(mensagem = mensagem,turma=aluno_turma,data_aviso=data_aviso)
-        aviso.save()
-
 
 def perfil(request):
     if request.method == 'GET':
@@ -145,13 +131,4 @@ def plataforma(request):
     if request.user.is_authenticated:
         return
     else:
-        return HttpResponseRedirect('/')
-
-def avisos(request):
-     if request.user.is_authenticated and request.user.is_active:
-            avisos = Aviso.objects.all()
-            
-            return render(request, 'pages/avisos.html', {'avisos': avisos})
-
-     else:
         return HttpResponseRedirect('/')
