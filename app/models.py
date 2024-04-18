@@ -9,4 +9,3 @@ class Aluno(models.Model):
 class Aviso(models.Model):
     mensagem = models.TextField()
     data_aviso = models.DateField()
-    turma = models.CharField(max_length=50)

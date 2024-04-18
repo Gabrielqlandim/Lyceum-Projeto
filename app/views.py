@@ -9,11 +9,12 @@ from django.shortcuts import render, redirect
 from .models import Aluno
 from .models import Aviso
 
-
+from datetime import date
 #home
 def home(request):
     if request.user.is_authenticated and request.user.is_active:
-        return render(request, 'pages/home.html')
+        user = request.user
+        return render(request, 'pages/home.html', {'username': user})
     else:
         return HttpResponseRedirect('/')
 #login
@@ -129,7 +130,15 @@ def disciplinas(request):
 
 def calendario_academico(request):
     if request.user.is_authenticated and request.user.is_active:
-        return render(request, 'pages/calendario_academico.html')
+        if request.method == 'GET':
+            return render(request, 'pages/calendario_academico.html')
+        elif request.method == 'POST':
+            title = request.POST.get("titulo")
+            
+            data = date.today()
+            aviso = Aviso(mensagem=title,data_aviso=date)
+            aviso.save()
+            return render(request, 'pages/calendario_academico.html')
     else:
         return HttpResponseRedirect('/')
 

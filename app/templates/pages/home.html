@@ -5,7 +5,26 @@
 <body>
     
     {% include "pages/header.html" %} {#Menu do programa#}
-    
+    <h1>Bem-vindo, {{username}}</h1>
+    <div class="table-fundo">
+        <table id="avisostable">
+          <thead>
+            <tr>
+              <th id ="th-table">Avisos</th>
+              <th>Data de Matrícula</th>        
+            </tr>
+          </thead>
+          <tbody>
+            {% for aviso in avisos %}
+                <tr>
+                    <td>{{ aviso.mensagem }}</td>
+                    <td>{{ aviso.data_aviso }}</td>
+                    </div>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     <script src="script.js"></script>
 </body>
 
