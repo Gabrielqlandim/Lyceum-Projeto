@@ -8,9 +8,7 @@
   {% include "pages/header.html" %} {#Menu do programa#} 
   <br><br>
   <div class="table-fundo">
-    <form method="GET" action="{% url 'atualizar_alunos' %}">
-      {% csrf_token %}
-        <table>
+      <table>
         <thead>
             <tr>
             <th>ID</th>
@@ -28,14 +26,17 @@
                     <td>{{ aluno.nome }}</td>
                     <td>{{ aluno.serie_turma }}</td>
                     <td>{{ aluno.data_matricula }}</td>
+                    <form method="POST" action="{% url 'atualizar_alunos' %}"> {% csrf_token %}
                     <td><button class="cadastrar-botao" name="atualizar" value="{{ aluno.id_aluno }}">Atualizar</button></td>
+                    </form>
+                    <form method="POST" action="{% url 'editar_alunos' %}"> {% csrf_token %}
                     <td><button class="cadastrar-botao" name="remover" value="{{ aluno.id_aluno }}" onclick="return confirmarExclusao()">Remover</button></td>
+                    </form>
                     </div>
                 </tr>
             {% endfor %}
         </tbody>
-        </table>
-    </form>
+      </table>
   </div>
   <br>
   <div class="alunos-buttons">
