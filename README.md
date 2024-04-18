@@ -35,6 +35,8 @@ O Study School é um projeto Django que visa criar uma plataforma de gerenciamen
 - [Relatório da Programação em Par](https://docs.google.com/document/d/16EpwHZ0OlmUOi7epajKD1i2yXCiQcODgXIGaLA9vPCc/edit?usp=sharing)
 - [Website Azure StudySchool](https://studyschool.azurewebsites.net/)
 
+## Entrega 03
+
 Quadro Jira:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/74963264/76292a90-cfb2-4916-a0a3-6d26b1697316)
 
