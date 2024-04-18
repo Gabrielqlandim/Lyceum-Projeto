@@ -4,7 +4,7 @@ from django.contrib.auth import login as lg
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 from .models import Aluno
 from .models import Aviso
@@ -95,7 +95,7 @@ def atualizar_alunos(request):
             return HttpResponseRedirect('/alunos/')
 
 
-#editar alunos (em processo de desenvolvimento, não funcional)
+#editar alunos
     
 def editar_alunos(request):
     if request.method == 'GET':
@@ -119,8 +119,6 @@ def alunos(request):
         return render(request, 'pages/alunos.html', {'alunos': alunos})
     else:
         return HttpResponseRedirect('/')
-    
-    
 
 def disciplinas(request):
     if request.user.is_authenticated and request.user.is_active:
@@ -131,13 +129,6 @@ def disciplinas(request):
 def calendario_academico(request):
     if request.user.is_authenticated and request.user.is_active:
         if request.method == 'GET':
-            return render(request, 'pages/calendario_academico.html')
-        elif request.method == 'POST':
-            title = request.POST.get("titulo")
-            
-            data = date.today()
-            aviso = Aviso(mensagem=title,data_aviso=date)
-            aviso.save()
             return render(request, 'pages/calendario_academico.html')
     else:
         return HttpResponseRedirect('/')

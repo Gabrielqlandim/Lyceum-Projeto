@@ -303,12 +303,10 @@
 
     <div id="newEventModal">
         <h2>Novo evento</h2>
-        <form method="POST" action="{% url 'calendario_academico' %}"> {% csrf_token %}
-        <input name="titulo" id="eventTitleInput" placeholder="Título do evento" />
+        <input name="eventTitleInput" id="eventTitleInput" placeholder="Título do evento" />
 
         <button id="saveButton"> Salvar</button>
         <button id="cancelButton">Cancelar</button>
-        </form> 
     </div>
 
     <div id="deleteEventModal">
