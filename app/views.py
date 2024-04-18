@@ -74,14 +74,15 @@ def cadastrar_alunos(request):
 
 #atualizar alunos
 def atualizar_alunos(request):
-    print("oK")
+    print("FUNÇÃO OK")
     if request.method == 'GET':
         if request.user.is_authenticated and request.user.is_active:
             id = request.GET['atualizar']
-            print("OK")
-            return render(request, 'pages/alunos/atualizar_alunos.html', {'id_aluno': id})
+            aluno = Aluno.objects.get(id_aluno=id)
+            print("GET OK")
+            return render(request, 'pages/alunos/atualizar_alunos.html', {'id_aluno': id, 'aluno': aluno})
     if request.method =='POST':
-        print("ok")
+        print("POST OK")
         if 'att' in request.POST:
             id = request.POST.get("att")
             aluno = Aluno.objects.get(id_aluno=id)
@@ -89,9 +90,9 @@ def atualizar_alunos(request):
             aluno.serie_turma = request.POST.get('turma-aluno')
             aluno.data_matricula = request.POST.get('data-aluno')
 
-            aluno = Aluno(nome=aluno.nome, serie_turma=aluno.serie_turma, data_matricula=aluno.data_matricula)
+            aluno = Aluno(id_aluno=id, nome=aluno.nome, serie_turma=aluno.serie_turma, data_matricula=aluno.data_matricula)
             aluno.save()
-            print("ok")
+            print("ATT OK")
             return HttpResponseRedirect('/alunos/')
 
 

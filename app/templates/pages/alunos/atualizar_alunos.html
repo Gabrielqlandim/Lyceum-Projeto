@@ -11,21 +11,21 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="nome-aluno">Nome do Aluno:</label>
-                    <input type="text" class="form-control" id="nome-aluno" name="nome-aluno" value="{{id_aluno.nome}}" required>
+                    <input type="text" class="form-control" id="nome-aluno" name="nome-aluno" value="{{aluno.nome}}" required>
                 </div>
                 <div class="form-group">
                     <label for="turma-aluno">Turma:</label>
-                    <select name="turma-aluno" id="turma-aluno" class="form-control" value="{{id_aluno.serie_turma}}" required>
-                        <option value="1-A">1-A</option>
-                        <option value="2-A">2-A</option>
-                        <option value="3-A">3-A</option>
-                        <option value="4-A">4-A</option>
-                        <option value="5-A">5-A</option>
+                    <select name="turma-aluno" id="turma-aluno" class="form-control" value="{{aluno.serie_turma}}" required>
+                        <option value="1-A" {% if '1-A' == aluno.serie_turma %}selected{% endif %}>1-A</option>
+                        <option value="2-A" {% if '2-A' == aluno.serie_turma %}selected{% endif %}>2-A</option>
+                        <option value="3-A" {% if '3-A' == aluno.serie_turma %}selected{% endif %}>3-A</option>
+                        <option value="4-A" {% if '4-A' == aluno.serie_turma %}selected{% endif %}>4-A</option>
+                        <option value="5-A" {% if '5-A' == aluno.serie_turma %}selected{% endif %}>5-A</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="data-aluno">Data de Matricula:</label>
-                    <input type="date" class="form-control" id="data-aluno" name="data-aluno" value="{{data_matricula}}" required>
+                    <input type="date" class="form-control" id="data-aluno" name="data-aluno" value="{{aluno.data_matricula|date:'Y-m-d'}}" required>
                 </div>
                 <button type="submit" name="att" value="{{id_aluno}}" class="btn btn-primary">Atualizar</button>
             </form>

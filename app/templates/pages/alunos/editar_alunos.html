@@ -26,7 +26,7 @@
                     <td>{{ aluno.nome }}</td>
                     <td>{{ aluno.serie_turma }}</td>
                     <td>{{ aluno.data_matricula }}</td>
-                    <form method="POST" action="{% url 'atualizar_alunos' %}"> {% csrf_token %}
+                    <form method= "GET" action="{% url 'atualizar_alunos' %}"> {% csrf_token %}
                     <td><button class="cadastrar-botao" name="atualizar" value="{{ aluno.id_aluno }}">Atualizar</button></td>
                     </form>
                     <form method="POST" action="{% url 'editar_alunos' %}"> {% csrf_token %}
