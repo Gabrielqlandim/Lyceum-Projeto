@@ -7,7 +7,7 @@
     <div class="cadastrar_aluno">
         <div class="container">
             <h2 id="tittle-cadastro">Atualizar Aluno</h2><br>
-            <form method="POST" action="{% url 'alunos' %}">
+            <form method="POST" action="{% url 'atualizar_alunos' %}">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="nome-aluno">Nome do Aluno:</label>
@@ -27,7 +27,7 @@
                     <label for="data-aluno">Data de Matricula:</label>
                     <input type="date" class="form-control" id="data-aluno" name="data-aluno" value="{{data_matricula}}" required>
                 </div>
-                <button type="submit" name="att" class="btn btn-primary">Atualizar</button>
+                <button type="submit" name="att" value="{{id_aluno}}" class="btn btn-primary">Atualizar</button>
             </form>
         </div>
     </div>

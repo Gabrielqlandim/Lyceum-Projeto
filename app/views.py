@@ -82,6 +82,7 @@ def atualizar_alunos(request):
     if request.method =='POST':
         print("ok")
         if 'att' in request.POST:
+            id = request.POST.get("att")
             aluno = Aluno.objects.get(id_aluno=id)
             aluno.nome = request.POST.get('nome-aluno')
             aluno.serie_turma = request.POST.get('turma-aluno')
@@ -91,17 +92,6 @@ def atualizar_alunos(request):
             aluno.save()
             print("ok")
             return HttpResponseRedirect('/alunos/')
-        
-"""def salvar_att(request):
-    if request.method=='POST':
-        if 'att' in request.POST:
-            aluno = Aluno.objects.get(id_aluno=id)
-            aluno.nome = request.POST.get('nome-aluno')
-            aluno.serie_turma = request.POST.get('turma-aluno')
-            aluno.data_matricula = request.POST.get('data-aluno')
-            aluno.save()
-            print("ok")
-            return render(request, 'pages/alunos.html')"""
 
 
 #editar alunos (em processo de desenvolvimento, não funcional)
