@@ -8,7 +8,8 @@
   {% include "pages/header.html" %} {#Menu do programa#} 
   <br><br>
   <div class="table-fundo">
-    <form method="GET" action="{% url 'atualizar_alunos' %}">{% csrf_token %}
+    <form method="GET" action="{% url 'atualizar_alunos' %}">
+      {% csrf_token %}
         <table>
         <thead>
             <tr>
@@ -27,7 +28,7 @@
                     <td>{{ aluno.nome }}</td>
                     <td>{{ aluno.serie_turma }}</td>
                     <td>{{ aluno.data_matricula }}</td>
-                    <td><button class="cadastrar-botao" name="atualizar" value="{{ aluno.id_aluno }}" onclick="atualizar()">Atualizar</button></td>
+                    <td><button class="cadastrar-botao" name="atualizar" value="{{ aluno.id_aluno }}">Atualizar</button></td>
                     <td><button class="cadastrar-botao" name="remover" value="{{ aluno.id_aluno }}" onclick="return confirmarExclusao()">Remover</button></td>
                     </div>
                 </tr>
@@ -48,9 +49,7 @@
     function confirmarExclusao() {
       return confirm("Tem certeza que deseja excluir este aluno?");
     }
-    function atualizar() {
-      window.location.replace("{% url 'atualizar_alunos' %}")
-    }
+    
   </script>
 </body>
 

@@ -4,7 +4,7 @@ from django.contrib.auth import login as lg
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Aluno
 from .models import Aviso
@@ -73,10 +73,35 @@ def cadastrar_alunos(request):
 
 #atualizar alunos
 def atualizar_alunos(request):
+    print("oK")
     if request.method == 'GET':
         if request.user.is_authenticated and request.user.is_active:
             id = request.GET['atualizar']
+            print("OK")
             return render(request, 'pages/alunos/atualizar_alunos.html', {'id_aluno': id})
+    if request.method =='POST':
+        print("ok")
+        if 'att' in request.POST:
+            aluno = Aluno.objects.get(id_aluno=id)
+            aluno.nome = request.POST.get('nome-aluno')
+            aluno.serie_turma = request.POST.get('turma-aluno')
+            aluno.data_matricula = request.POST.get('data-aluno')
+
+            aluno = Aluno(nome=aluno.nome, serie_turma=aluno.serie_turma, data_matricula=aluno.data_matricula)
+            aluno.save()
+            print("ok")
+            return HttpResponseRedirect('/alunos/')
+        
+"""def salvar_att(request):
+    if request.method=='POST':
+        if 'att' in request.POST:
+            aluno = Aluno.objects.get(id_aluno=id)
+            aluno.nome = request.POST.get('nome-aluno')
+            aluno.serie_turma = request.POST.get('turma-aluno')
+            aluno.data_matricula = request.POST.get('data-aluno')
+            aluno.save()
+            print("ok")
+            return render(request, 'pages/alunos.html')"""
 
 
 #editar alunos (em processo de desenvolvimento, não funcional)
