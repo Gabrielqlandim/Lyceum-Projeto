@@ -15,6 +15,7 @@ O Study School é um projeto Django que visa criar uma plataforma de gerenciamen
 - Linguagens de Marcação: HTML & CSS 
 - Banco de Dados: SQLite3
 - Framework de Desenvolvimento: Django
+- Deployment: Microsoft Azure
 - Frontend: A interface do usuário é desenvolvida utilizando HTML, CSS com Bootstrap e JavaScript.
 - Organização: Utilizamos a plataforma Jira para organizar o projeto.
 
