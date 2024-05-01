@@ -9,10 +9,23 @@ describe('historia calendario academico', () => {
         cy.get('#senha').type(senha);
         cy.get('#botao').click();
         cy.get('#acalendario').click();
-        cy.get('#calendar > :nth-child(2)').click();
+        cy.get(':nth-child(18)').click();
         cy.get('#eventTitleInput').type('Novo Evento');
         cy.get('#saveButton').click();
         cy.get('.event').invoke('text').should('have.string', "Novo Evento");
-
+    })
+    it('remover evento', () => {
+        cy.visit('/');
+        cy.get('#nome').type(nome);
+        cy.get('#senha').type(senha);
+        cy.get('#botao').click();
+        cy.get('#acalendario').click();
+        cy.get(':nth-child(18)').click();
+        cy.get('#eventTitleInput').type('Novo Evento');
+        cy.get('#saveButton').click();
+        cy.get('.event').click();
+        cy.get('#deleteButton').click();
+        cy.get(':nth-child(18)').click();
+        cy.get('#newEventModal').should('be.visible');
     })
 })
