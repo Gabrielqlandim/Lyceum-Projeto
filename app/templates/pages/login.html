@@ -80,9 +80,9 @@
 
     <section>
         <br><br>
-        <form onsubmit="clicar(); return false;" action="{% url 'login' %}" method="POST">{% csrf_token %}
+        <form action="{% url 'login' %}" method="POST">{% csrf_token %}
             <div>
-                <p>Nome: <input type="text" class="login-input" id="email" name="name">
+                <p>Nome: <input type="text" class="login-input" id="nome" name="name">
             </div>
             </p>
             <div>
@@ -91,7 +91,7 @@
             </div>
             </p>
             <p>
-                <input type="submit" value="Login" id="botao">
+                <input name ="login"type="submit" value="Login" id="botao">
             </p>
             <a id="cadastrar-btn" onclick="cadastrar()">Cadastrar</a>
         </form>

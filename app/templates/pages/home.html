@@ -1,11 +1,37 @@
 {% include "pages/head.html" %}
 
 </head>
-
 <body>
-    
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .divi{
+            margin: auto;
+            display: inline-flex;
+            text-align: center;
+            
+        }
+        .grid-home{
+            background-color: aqua;
+            height: 200px;
+            width: 325px;
+            margin-left: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+        }
+    </style>
     {% include "pages/header.html" %} {#Menu do programa#}
-    
+    <h1>Bem-vindo, {{username}}</h1>
+
+    <div class="divi">
+        <p class="grid-home">Alunos</p>
+        <p class="grid-home">Disciplinas</p>
+        <p class="grid-home">Calendário Acadêmico</p>
+        <p class="grid-home">Perfil do professor</p>
+    </div>
     <script src="script.js"></script>
 </body>
 

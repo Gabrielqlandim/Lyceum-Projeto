@@ -7,12 +7,14 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from .models import Aluno
+from .models import Aviso
 
-
+from datetime import date
 #home
 def home(request):
     if request.user.is_authenticated and request.user.is_active:
-        return render(request, 'pages/home.html')
+        user = request.user
+        return render(request, 'pages/home.html', {'username': user})
     else:
         return HttpResponseRedirect('/')
 #login
@@ -69,14 +71,32 @@ def cadastrar_alunos(request):
         aluno.save()
 
         return HttpResponseRedirect('/alunos/')
-    
+
 #atualizar alunos
 def atualizar_alunos(request):
+    print("FUNÇÃO OK")
     if request.method == 'GET':
         if request.user.is_authenticated and request.user.is_active:
-            return render(request, 'pages/alunos/atualizar_alunos.html') 
+            id = request.GET['atualizar']
+            aluno = Aluno.objects.get(id_aluno=id)
+            print("GET OK")
+            return render(request, 'pages/alunos/atualizar_alunos.html', {'id_aluno': id, 'aluno': aluno})
+    if request.method =='POST':
+        print("POST OK")
+        if 'att' in request.POST:
+            id = request.POST.get("att")
+            aluno = Aluno.objects.get(id_aluno=id)
+            aluno.nome = request.POST.get('nome-aluno')
+            aluno.serie_turma = request.POST.get('turma-aluno')
+            aluno.data_matricula = request.POST.get('data-aluno')
 
-#editar alunos (em processo de desenvolvimento, não funcional)
+            aluno = Aluno(id_aluno=id, nome=aluno.nome, serie_turma=aluno.serie_turma, data_matricula=aluno.data_matricula)
+            aluno.save()
+            print("ATT OK")
+            return HttpResponseRedirect('/alunos/')
+
+
+#editar alunos
     
 def editar_alunos(request):
     if request.method == 'GET':
@@ -91,6 +111,8 @@ def editar_alunos(request):
             aluno = Aluno.objects.get(id_aluno=pk)
             aluno.delete()
             return HttpResponseRedirect('/editar_alunos/')
+        if 'atualizar' in request.POST:
+            return render(request, 'pages/alunos/atualizar_alunos/')
 
 def alunos(request):
     if request.user.is_authenticated and request.user.is_active:
@@ -98,8 +120,6 @@ def alunos(request):
         return render(request, 'pages/alunos.html', {'alunos': alunos})
     else:
         return HttpResponseRedirect('/')
-    
-    
 
 def disciplinas(request):
     if request.user.is_authenticated and request.user.is_active:
@@ -109,9 +129,11 @@ def disciplinas(request):
 
 def calendario_academico(request):
     if request.user.is_authenticated and request.user.is_active:
-        return render(request, 'pages/calendario_academico.html')
+        if request.method == 'GET':
+            return render(request, 'pages/calendario_academico.html')
     else:
         return HttpResponseRedirect('/')
+
 
 def perfil(request):
     if request.method == 'GET':

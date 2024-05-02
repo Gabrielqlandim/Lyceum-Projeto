@@ -15,32 +15,43 @@ O Study School é um projeto Django que visa criar uma plataforma de gerenciamen
 - Linguagens de Marcação: HTML & CSS 
 - Banco de Dados: SQLite3
 - Framework de Desenvolvimento: Django
+- Deployment: Microsoft Azure
 - Frontend: A interface do usuário é desenvolvida utilizando HTML, CSS com Bootstrap e JavaScript.
 - Organização: Utilizamos a plataforma Jira para organizar o projeto.
 
 ## Links Importantes
 
-### Entrega 01
+## Entrega 01
 - [Figma](https://www.figma.com/file/FCG2dbTLWFr8CjhgWggdRB/Study-School?type=design&node-id=0%3A1&mode=design&t=UFXgLshoyp2FbmAq-1)
 - [Screen Cast]( https://youtu.be/VUmMxBbVBKc )
 - [Quadro Jira](https://zibec.atlassian.net/jira/software/projects/CEBIZ/boards/2?atlOrigin=eyJpIjoiNWE5YjNhNmM4NjI1NDBlM2FhMjllZDU5NTFhOTYxYmMiLCJwIjoiaiJ9)
 - [Backlog Jira](https://zibec.atlassian.net/jira/software/projects/CEBIZ/boards/2/backlog?atlOrigin=eyJpIjoiOWQxZjk5OWVjOGNjNGMzYzhlOTFlNGIzMmNmNzQ1ZTAiLCJwIjoiaiJ9)
 
-### Entrega 02
-- [Screen Cast]()
+## Entrega 02
+- [Screen Cast](https://youtu.be/aghYdCQT0us)
 - [Quadro Jira](https://zibec.atlassian.net/jira/software/projects/CEBIZ/boards/2?atlOrigin=eyJpIjoiNWE5YjNhNmM4NjI1NDBlM2FhMjllZDU5NTFhOTYxYmMiLCJwIjoiaiJ9)
 - [Backlog Jira](https://zibec.atlassian.net/jira/software/projects/CEBIZ/boards/2/backlog?atlOrigin=eyJpIjoiOWQxZjk5OWVjOGNjNGMzYzhlOTFlNGIzMmNmNzQ1ZTAiLCJwIjoiaiJ9)
 - [Diagrama de atividades](https://drive.google.com/file/d/1oSLXnrXqSW-eNy4NOCYjdf2zKC5ROQ9V/view?usp=sharing)
-- [Relatório da programação em par](https://docs.google.com/document/d/16EpwHZ0OlmUOi7epajKD1i2yXCiQcODgXIGaLA9vPCc/edit?usp=sharing)
+- [Relatório da Programação em Par](https://docs.google.com/document/d/16EpwHZ0OlmUOi7epajKD1i2yXCiQcODgXIGaLA9vPCc/edit?usp=sharing)
+- [Website Azure StudySchool](https://studyschool.azurewebsites.net/)
+
+## Entrega 03
+- [Diagrama de atividades](https://miro.com/app/board/uXjVKMDPzF4=/?share_link_id=958191478717)
 
 Quadro Jira:
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/60e5539e-a176-4c3e-ada3-ea2148485e83)
 
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/74963264/744becf7-d5a8-4974-bdab-21cafca9b7f7)
 
 Backlog Jira: 
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/6f0045b7-b862-4b34-a463-ed599654ad0c)
 
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/74963264/6b41b4f8-8e08-44ff-9e40-e187ca5ddfce)
 
+Issue/Bug Tracker:
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/195d3463-d627-4c90-b72d-79de26c99114)
+
+
+### Instruções de Acesso
+Para acessar e utilizar o Study School, clique no link acima e depois no botão "cadastro" para criar uma conta no sistema. Após isso, você será redirecionado para a página de login, onde deverá preencher suas informações de acordo com o cadastro recém-realizado. Assim, você conseguirá acessar a plataforma do StudySchool com sucesso.
 
 ## Equipe
 - [Felipe Albuquerque](https://github.com/FelipeARFranca) - farf@cesar.school 📩
