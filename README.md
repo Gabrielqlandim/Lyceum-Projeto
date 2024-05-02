@@ -39,13 +39,16 @@ O Study School é um projeto Django que visa criar uma plataforma de gerenciamen
 - [Diagrama de atividades](https://miro.com/app/board/uXjVKMDPzF4=/?share_link_id=958191478717)
 
 Quadro Jira:
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/74963264/76292a90-cfb2-4916-a0a3-6d26b1697316)
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/60e5539e-a176-4c3e-ada3-ea2148485e83)
+
 
 Backlog Jira: 
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/74963264/e1632af8-a90a-4e27-80e7-ca514924ea19)
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/6f0045b7-b862-4b34-a463-ed599654ad0c)
+
 
 Issue/Bug Tracker:
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142419701/327adebc-1168-44b6-9877-f28441213c1a)
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/195d3463-d627-4c90-b72d-79de26c99114)
+
 
 ### Instruções de Acesso
 Para acessar e utilizar o Study School, clique no link acima e depois no botão "cadastro" para criar uma conta no sistema. Após isso, você será redirecionado para a página de login, onde deverá preencher suas informações de acordo com o cadastro recém-realizado. Assim, você conseguirá acessar a plataforma do StudySchool com sucesso.
