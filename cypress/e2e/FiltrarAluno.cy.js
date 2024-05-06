@@ -1,7 +1,16 @@
 describe('historia de filtrar aluno', () => {
     let nome = "teste";
+    let email = "teste@cesar.school";
     let senha = "123";
 
+    it('cadstro com sucesso', () => {
+        cy.visit('/');
+        cy.get('#cadastrar-btn').click();
+        cy.get('#nome').type(nome);
+        cy.get('#email').type(email);
+        cy.get('#senha').type(senha);
+        cy.get('#botao').click();
+    })
     it('filtrar alunos por nome em ordem alfabetica com sucesso', () => {
         cy.visit('/');
         cy.get('#nome').type(nome);
@@ -78,9 +87,21 @@ describe('historia de filtrar aluno', () => {
         cy.get('[onclick="sort(2)"]').click();
         cy.get('[onclick="sort(3)"]').click();
         cy.get('[onclick="sort(0)"]').click();
-
+        
         cy.get('@id_first').then((id_first) => {
             cy.get('tbody > :nth-child(1) > :nth-child(1)').should('have.text', id_first);
-        });
-    })                            
-})          
+        }); 
+    })
+    it('apagar usuario teste', () => {
+        cy.visit('/admin/');
+        cy.get('#id_username').type("adm");
+        cy.get('#id_password').type("123");
+        cy.get('.submit-row > input').click(); 
+        cy.get('.model-user > th > a').click();
+        cy.get(':nth-child(10) > .action-checkbox > .action-select').check();
+        cy.get('select').select('Remover usuários selecionados');
+        cy.get('.button').click();
+        cy.get('div > [type="submit"]').click();
+        cy.get('#result_list').should('not.contain', nome);
+    })                          
+})              
