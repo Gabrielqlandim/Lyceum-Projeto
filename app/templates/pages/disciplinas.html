@@ -1,13 +1,22 @@
 {% include "pages/head.html" %} {#Head de todas as páginas estão em head.html#}
+{% load static %}
 
+<link href="{% static 'css/disciplinas.css' %}" rel="stylesheet">
 <title>Disciplinas</title> {#disciplinas#}
 </head>
 
 <body>
   {% include "pages/header.html" %} {#Menu do programa#}
-
-
   <h1>Disciplinas</h1>
+
+  <div class="divi">
+    <p class="grid-home"><a href="{% url 'portugues' %}">Português</a></p>
+    <p class="grid-home"><a href="{% url 'matematica' %}">Matematica</a></p>
+    <p class="grid-home"><a href="{% url 'historia' %}">História</a></p>
+    <p class="grid-home"><a href="{% url 'ciencias' %}">Ciências</a></p>
+    <p class="grid-home"><a href="{% url 'geografia' %}">Geografia</a></p>
+    <p class="grid-home"><a href="{% url 'ingles' %}">Inglês</a></p>
+  </div>
 
 </body>
 

@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from .models import Aluno
-from .models import Aviso
+from .models import Materia
 
 from datetime import date
 #home
@@ -121,11 +121,77 @@ def alunos(request):
     else:
         return HttpResponseRedirect('/')
 
+
+# disciplinas
 def disciplinas(request):
     if request.user.is_authenticated and request.user.is_active:
         return render(request, 'pages/disciplinas.html')
     else:
         return HttpResponseRedirect('/')
+    
+def portugues(request):
+    if request.user.is_authenticated and request.user.is_active:
+        return render(request, 'pages/disciplinas/portugues.html')
+    else:
+        return HttpResponseRedirect('/')
+
+def matematica(request):
+    if request.user.is_authenticated and request.user.is_active:
+        return render(request, 'pages/disciplinas/matematica.html')
+    else:
+        return HttpResponseRedirect('/')
+    
+def historia(request):
+    if request.user.is_authenticated and request.user.is_active:
+        return render(request, 'pages/disciplinas/historia.html')
+    else:
+        return HttpResponseRedirect('/')
+    
+def geografia(request):
+    if request.user.is_authenticated and request.user.is_active:
+        return render(request, 'pages/disciplinas/geografia.html')
+    else:
+        return HttpResponseRedirect('/')
+    
+def ciencias(request):
+    if request.user.is_authenticated and request.user.is_active:
+        return render(request, 'pages/disciplinas/ciencias.html')
+    else:
+        return HttpResponseRedirect('/')
+    
+def ingles(request):
+    if request.user.is_authenticated and request.user.is_active:
+        return render(request, 'pages/disciplinas/ingles.html')
+    else:
+        return HttpResponseRedirect('/')
+    
+def notas(request):
+    if request.user.is_authenticated and request.user.is_active:
+        return render(request, 'pages/disciplinas/notas.html')
+    else:
+        return HttpResponseRedirect('/')
+    
+def faltas(request):
+    if request.user.is_authenticated and request.user.is_active:
+        if(request.method == 'GET'):
+            materia_escolhia = request.GET.get('faltas')
+
+            if(materia_escolhia == 'portugues'):
+                materias = Materia.objects.filter(nome_materia='Portugues')
+                alunos = [{'nome': materia.aluno.nome, 'id_aluno': materias.aluno.id_aluno , 'serie_turma': materias.aluno.serie_turma, 'faltas': materia.faltas} for materia in materias]
+                return render(request, 'pages/disciplinas/faltas.html', {'alunos': alunos})
+            
+        elif(request.method == 'POST'):
+            id = request.POST.get('id_aluno')
+            Aluno = Aluno.objects.get(id_aluno=id)
+            materia_escolhida = request.GET.get('faltas')
+            materia = Materia.objects.get(nome_materia=materia_escolhida, aluno = Aluno)
+            materia.faltas += 1
+            materia.save()
+    else:
+        return HttpResponseRedirect('/')
+
+#########################
 
 def calendario_academico(request):
     if request.user.is_authenticated and request.user.is_active:
