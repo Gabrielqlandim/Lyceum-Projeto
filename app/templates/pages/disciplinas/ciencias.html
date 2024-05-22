@@ -1,0 +1,33 @@
+{% include "pages/head.html" %} {#Head de todas as páginas estão em head.html#}
+{% load static %}
+
+<link href="{% static 'css/disciplinas.css' %}" rel="stylesheet">
+<title>Ciências</title>
+</head>
+
+<body>
+  {% include "pages/header.html" %} {#Menu do programa#}
+  <h1>Português</h1>
+
+  <div class="divi">  
+
+    <form action="{% url 'notas'%}" method="GET">
+      {% csrf_token %}
+     <p class="grid-home"><a href="{% url 'notas'%}">Notas</a></p>
+    </form>
+
+    <form action="{% url 'faltas'%}" method="GET">
+      {% csrf_token %}
+     <button class="grid-home" name="faltas" value="ciencias">Faltas</button>
+    </form>
+
+  </div>
+
+
+
+
+
+
+
+
+

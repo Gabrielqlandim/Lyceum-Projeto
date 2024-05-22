@@ -57,6 +57,7 @@ def cadastro_prof(request):
 
 #cadastro de aluno
 def cadastrar_alunos(request):
+    materias = ['portugues', 'matematica', 'historia', 'geografia', 'ciencias', 'ingles']
     if request.method == 'GET':
         if request.user.is_authenticated and request.user.is_active:
             return render(request, 'pages/alunos/cadastrar_alunos.html')
@@ -69,6 +70,10 @@ def cadastrar_alunos(request):
 
         aluno = Aluno(nome=aluno_name,serie_turma=aluno_turma,data_matricula=data_matriculado)
         aluno.save()
+
+        for materia in materias:
+            mateira_nova = Materia(aluno=aluno, nome_materia=materia, faltas=0, notas=0)
+            mateira_nova.save()
 
         return HttpResponseRedirect('/alunos/')
 
@@ -109,6 +114,12 @@ def editar_alunos(request):
         if 'remover' in request.POST:
             pk = request.POST.get('remover')
             aluno = Aluno.objects.get(id_aluno=pk)
+
+            materias = Materia.objects.all()
+            for materia in materias:
+                if(materia.aluno == aluno):
+                    materia.delete()
+                    
             aluno.delete()
             return HttpResponseRedirect('/editar_alunos/')
         if 'atualizar' in request.POST:
@@ -170,24 +181,34 @@ def notas(request):
         return render(request, 'pages/disciplinas/notas.html')
     else:
         return HttpResponseRedirect('/')
-    
+
 def faltas(request):
     if request.user.is_authenticated and request.user.is_active:
         if(request.method == 'GET'):
-            materia_escolhia = request.GET.get('faltas')
-
-            if(materia_escolhia == 'portugues'):
-                materias = Materia.objects.filter(nome_materia='Portugues')
-                alunos = [{'nome': materia.aluno.nome, 'id_aluno': materias.aluno.id_aluno , 'serie_turma': materias.aluno.serie_turma, 'faltas': materia.faltas} for materia in materias]
-                return render(request, 'pages/disciplinas/faltas.html', {'alunos': alunos})
+            materias = Materia.objects.all()
+            materia_escolhida = request.GET.get('faltas')
+            
+            # faz um array com todos os dados da materia escolhida
+            dados_escolhidos = []
+            for materia in materias:
+                if(materia.nome_materia == materia_escolhida):
+                    dados_escolhidos.append(materia)
+    
+            return render(request, 'pages/disciplinas/faltas.html', {'materia': dados_escolhidos})     
             
         elif(request.method == 'POST'):
-            id = request.POST.get('id_aluno')
-            Aluno = Aluno.objects.get(id_aluno=id)
-            materia_escolhida = request.GET.get('faltas')
-            materia = Materia.objects.get(nome_materia=materia_escolhida, aluno = Aluno)
+            materia_escolhida = request.POST.get('faltas')
+            id_aluno = request.POST.get('id_aluno')
+
+            aluno = Aluno.objects.get(id_aluno=id_aluno)
+            materias = Materia.objects.all()
+
+            # adiciona uma falta na materia escolhida
+            materia = Materia.objects.filter(aluno=aluno, nome_materia=materia_escolhida).first()
             materia.faltas += 1
             materia.save()
+
+            return HttpResponseRedirect('/faltas/?faltas='+materia_escolhida)
     else:
         return HttpResponseRedirect('/')
 

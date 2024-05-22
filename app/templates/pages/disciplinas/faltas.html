@@ -15,20 +15,22 @@
           <th onclick="sort(1)" id ="th-table">Nome</th>
           <th onclick="sort(2)" id ="th-table">Série/Turma</th>
           <th onclick="sort(3)" id ="th-table">Faltas</th>   
+          <th id ="th-table"></th>   
         </tr>
       </thead>
       <tbody> 
-        {% for aluno in alunos %}
+        {% for materia in materia %}
             <tr>
-                <td>{{ aluno.id_aluno }}</td>
-                <td>{{ aluno.nome }}</td>
-                <td>{{ aluno.serie_turma }}</td>
-                <td><input name="id_aluno" type="checkbox" value="{{ aluno.id_aluno }}"></td>
+                <td>{{ materia.aluno.id_aluno }}</td>
+                <td>{{ materia.aluno.nome }}</td>
+                <td>{{ materia.aluno.serie_turma }}</td>
+                <td>{{ materia.faltas }}</td>
+                <td><input name="id_aluno" type="checkbox" value="{{ materia.aluno.id_aluno }}"></td>
             </tr>
         {% endfor %}
       </tbody>
     </table>
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <button type="submit" name='faltas' value='portugues'class="btn btn-primary">Cadastrar</button>
     </form>
   </div>
 
