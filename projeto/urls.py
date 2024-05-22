@@ -22,4 +22,6 @@ urlpatterns = [
     path('ingles/', views.ingles, name = 'ingles'),
     path('notas/', views.notas, name = 'notas'),
     path('faltas/', views.faltas, name = 'faltas'),
+    path('editar_nota/', views.editar_nota, name = 'editar_nota'),
+
 ]

@@ -176,12 +176,36 @@ def notas(request):
     if request.user.is_authenticated and request.user.is_active:
         if(request.method == 'GET'):
             materia_escolhida = request.GET.get('notas')
-
-            return render(request, 'pages/disciplinas/notas.html')
+            materias = Materia.objects.all()
+            dados_escolhidos = []
+            for materia in materias:
+                if(materia.nome_materia == materia_escolhida):
+                    dados_escolhidos.append(materia)
+    
+            return render(request, 'pages/disciplinas/notas.html', {'materia': dados_escolhidos, 'notas': materia_escolhida})     
+        
         if(request.method == 'POST'):
-            return HttpResponseRedirect('/notas/')
+            if 'editar_notas' in request.POST:
+                return render(request, 'pages/disciplinas/editar_nota.html')
     else:
         return HttpResponseRedirect('/')
+    
+def editar_nota(request):
+    if request.user.is_authenticated and request.user.is_active:
+        if(request.method == 'GET'):
+            materia_id = request.POST.get('editar_nota')
+            materia = Materia.objects.filter(id = materia_id).first()
+            return render(request, 'pages/disciplinas/editar_nota.html', {'materia': materia})     
+        
+        if(request.method == 'POST'):
+            if "att" in request.POST:
+                nota=request.post.get("att")
+                materia.notas=nota
+                materia.save()
+                return HttpResponseRedirect('/notas/')
+    else:
+        return HttpResponseRedirect('/')
+    
 
 def faltas(request):
     if request.user.is_authenticated and request.user.is_active:

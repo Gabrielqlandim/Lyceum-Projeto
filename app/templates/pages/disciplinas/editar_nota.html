@@ -1,0 +1,21 @@
+{% include "pages/head.html" %} {#Head de todas as páginas estão em head.html#}
+<title>Editar Nota</title>
+</head>
+<body>
+    {% include "pages/header.html" %} {#Menu do programa#}
+    <div class="cadastrar_aluno">
+        <div class="container">
+            <h2 id="tittle-cadastro">Atualizar Aluno</h2><br>
+            <form method="POST" action="{% url 'editar_nota' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nome-aluno">Nome do Aluno: {{materia.notas}}</label>
+                    <input type="number" step="0.01" class="form-control" id="nome-aluno" name="nome-aluno" value="{{materia.notas}}" required>
+                </div>
+                
+                <button type="submit" name="att"  class="btn btn-primary">Atualizar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
