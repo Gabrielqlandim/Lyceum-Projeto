@@ -1,0 +1,87 @@
+{% include "pages/head.html" %} {#Head de todas as páginas estão em head.html#}
+
+<title>Notas</title> {#Faltas#}
+</head>
+<style>
+  h1 {
+    text-align: center;
+  }
+</style>
+<body>
+  
+  {% include "pages/header.html" %} {#Menu do programa#} 
+  <br><br>
+  <div class="table-fundo">
+    <form method="POST" action="{% url 'notas' %}"> {% csrf_token %}
+    <table id="alunotable">
+      <thead>
+        <tr>
+          <th onclick="sort(0)" id ="th-table">ID</th>
+          <th onclick="sort(1)" id ="th-table">Nome</th>
+          <th onclick="sort(2)" id ="th-table">Série/Turma</th>
+          <th onclick="sort(3)" id ="th-table">Notas</th>   
+          <th id ="th-table"></th>
+          <th id ="th-table"></th>
+        </tr>
+      </thead>
+      <tbody> 
+        {% for materia in materia %}
+            <tr>
+                <td>{{ materia.aluno.id_aluno }}</td>
+                <td>{{ materia.aluno.nome }}</td>
+                <td>{{ materia.aluno.serie_turma }}</td>
+                <td>{{ materia.notas }}</td>
+                <form method= "GET" action="{% url 'editar_nota' %}"> {% csrf_token %}
+                    <td><button class="cadastrar-botao" name="editar_notas" value="{{ materia.id }}">Editar</button></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </form>
+  </div>
+
+  <script>
+    function sort(n) {
+      var table, rows, organizando, pode_organizar, direction, i, linha1, linha2, organizar_count = 0;
+      table = document.getElementById("alunotable");
+      organizando = true;
+      direction = "asc";
+
+      while(organizando) {
+        organizando = false;
+        rows = table.rows;
+
+        for (i = 1; i < (rows.length - 1); i++) {
+          pode_organizar = false;
+
+          linha1 = rows[i].getElementsByTagName("TD")[n];
+          linha2 = rows[i+1].getElementsByTagName("TD")[n];
+
+          if(direction == "asc") {
+            if(linha1.innerHTML.toLowerCase() > linha2.innerHTML.toLowerCase()) {
+              pode_organizar = true;
+              break;
+            }
+          } else if (direction == "desc") {
+            if(linha1.innerHTML.toLowerCase() < linha2.innerHTML.toLowerCase()) {
+              pode_organizar = true;
+              break;
+            }
+          }
+        }
+        if (pode_organizar) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          organizando = true;
+          organizar_count++;
+        } else {
+          if (organizar_count == 0 && direction == "asc") {
+            direction = "desc";
+            organizando = true;
+          }
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

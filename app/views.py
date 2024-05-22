@@ -209,6 +209,7 @@ def editar_nota(request):
                 return HttpResponseRedirect('/notas/')
     else:
         return HttpResponseRedirect('/')
+    
 
 def faltas(request):
     if request.user.is_authenticated and request.user.is_active:
