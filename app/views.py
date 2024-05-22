@@ -178,7 +178,12 @@ def ingles(request):
     
 def notas(request):
     if request.user.is_authenticated and request.user.is_active:
-        return render(request, 'pages/disciplinas/notas.html')
+        if(request.method == 'GET'):
+            materia_escolhida = request.GET.get('notas')
+
+            return render(request, 'pages/disciplinas/notas.html')
+        if(request.method == 'POST'):
+            return HttpResponseRedirect('/notas/')
     else:
         return HttpResponseRedirect('/')
 
@@ -194,21 +199,35 @@ def faltas(request):
                 if(materia.nome_materia == materia_escolhida):
                     dados_escolhidos.append(materia)
     
-            return render(request, 'pages/disciplinas/faltas.html', {'materia': dados_escolhidos})     
+            return render(request, 'pages/disciplinas/faltas.html', {'materia': dados_escolhidos, 'faltas': materia_escolhida})     
             
         elif(request.method == 'POST'):
-            materia_escolhida = request.POST.get('faltas')
-            id_aluno = request.POST.get('id_aluno')
+            if request.POST.get('faltas_plus') != None:
+                materia_escolhida = request.POST.get('faltas_plus')
+                id_aluno = request.POST.get('id_aluno')
 
-            aluno = Aluno.objects.get(id_aluno=id_aluno)
-            materias = Materia.objects.all()
+                aluno = Aluno.objects.get(id_aluno=id_aluno)
+                materias = Materia.objects.all()
 
-            # adiciona uma falta na materia escolhida
-            materia = Materia.objects.filter(aluno=aluno, nome_materia=materia_escolhida).first()
-            materia.faltas += 1
-            materia.save()
+                # adiciona uma falta na materia escolhida
+                materia = Materia.objects.filter(aluno=aluno, nome_materia=materia_escolhida).first()
+                materia.faltas += 1
+                materia.save()
+            
+                return HttpResponseRedirect('/faltas/?faltas='+materia_escolhida)
+            elif request.POST.get('faltas_minus') != None:
+                print("FALTA MINUS")
+                materia_escolhida = request.POST.get('faltas_minus')
+                id_aluno = request.POST.get('id_aluno')
 
-            return HttpResponseRedirect('/faltas/?faltas='+materia_escolhida)
+                aluno = Aluno.objects.get(id_aluno=id_aluno)
+                materias = Materia.objects.all()
+
+                # remove uma falta na materia escolhida
+                materia = Materia.objects.filter(aluno=aluno, nome_materia=materia_escolhida).first()
+                materia.faltas -= 1
+                materia.save()
+                return HttpResponseRedirect('/faltas/?faltas='+materia_escolhida)
     else:
         return HttpResponseRedirect('/')
 

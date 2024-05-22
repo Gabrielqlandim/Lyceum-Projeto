@@ -4,7 +4,11 @@
 <link href="{% static 'css/disciplinas.css' %}" rel="stylesheet">
 <title>Português</title>
 </head>
-
+<style>
+  h1 {
+    text-align: center;
+  }
+</style>
 <body>
   {% include "pages/header.html" %} {#Menu do programa#}
   <h1>Português</h1>
@@ -13,7 +17,7 @@
 
     <form action="{% url 'notas'%}" method="GET">
       {% csrf_token %}
-     <p class="grid-home"><a href="{% url 'notas'%}">Notas</a></p>
+      <button class="grid-home" name="notas" value="portugues">Notas</button>
     </form>
 
     <form action="{% url 'faltas'%}" method="GET">

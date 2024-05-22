@@ -4,16 +4,20 @@
 <link href="{% static 'css/disciplinas.css' %}" rel="stylesheet">
 <title>Geografia</title>
 </head>
-
+<style>
+  h1 {
+    text-align: center;
+  }
+</style>
 <body>
   {% include "pages/header.html" %} {#Menu do programa#}
-  <h1>Português</h1>
+  <h1>Geografia</h1>
 
   <div class="divi">  
 
     <form action="{% url 'notas'%}" method="GET">
       {% csrf_token %}
-     <p class="grid-home"><a href="{% url 'notas'%}">Notas</a></p>
+      <button class="grid-home" name="notas" value="geografia">Notas</button>
     </form>
 
     <form action="{% url 'faltas'%}" method="GET">

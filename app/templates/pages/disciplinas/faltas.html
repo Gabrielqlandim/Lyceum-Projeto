@@ -2,8 +2,13 @@
 
 <title>Faltas</title> {#Faltas#}
 </head>
+<style>
+  h1 {
+    text-align: center;
+  }
+</style>
 <body>
-
+  
   {% include "pages/header.html" %} {#Menu do programa#} 
   <br><br>
   <div class="table-fundo">
@@ -16,6 +21,7 @@
           <th onclick="sort(2)" id ="th-table">Série/Turma</th>
           <th onclick="sort(3)" id ="th-table">Faltas</th>   
           <th id ="th-table"></th>   
+          <th id ="th-table"></th>   
         </tr>
       </thead>
       <tbody> 
@@ -25,12 +31,13 @@
                 <td>{{ materia.aluno.nome }}</td>
                 <td>{{ materia.aluno.serie_turma }}</td>
                 <td>{{ materia.faltas }}</td>
-                <td><input name="id_aluno" type="checkbox" value="{{ materia.aluno.id_aluno }}"></td>
+                <input type="hidden" id="id_aluno" name="id_aluno" value={{ materia.aluno.id_aluno}}>
+                <td><button type="submit" name='faltas_plus' value="{{ faltas }}" data-id-aluno="{{ materia.aluno.id_aluno }}" class="btn btn-primary">+</button></td>
+                <td><button type="submit" name='faltas_minus' value="{{ faltas }}" data-id-aluno="{{ materia.aluno.id_aluno }}" class="btn btn-primary">-</button></td>
             </tr>
         {% endfor %}
       </tbody>
     </table>
-    <button type="submit" name='faltas' value='portugues'class="btn btn-primary">Cadastrar</button>
     </form>
   </div>
 
