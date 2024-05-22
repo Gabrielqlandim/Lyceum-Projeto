@@ -55,59 +55,12 @@ def cadastro_prof(request):
             messages.success(request, 'Usuário cadastrado!')
         return HttpResponseRedirect('/')
 
-#cadastro de aluno
-def cadastrar_alunos(request):
-    materias = ['portugues', 'matematica', 'historia', 'geografia', 'ciencias', 'ingles']
-    if request.method == 'GET':
-        if request.user.is_authenticated and request.user.is_active:
-            return render(request, 'pages/alunos/cadastrar_alunos.html')
-        else:
-            return HttpResponseRedirect('/')
-    elif request.method == 'POST':
-        aluno_name = request.POST.get('nome-aluno')
-        aluno_turma = request.POST.get('turma-aluno')
-        data_matriculado = request.POST.get('data-aluno')
-
-        aluno = Aluno(nome=aluno_name,serie_turma=aluno_turma,data_matricula=data_matriculado)
-        aluno.save()
-
-        for materia in materias:
-            mateira_nova = Materia(aluno=aluno, nome_materia=materia, faltas=0, notas=0)
-            mateira_nova.save()
-
-        return HttpResponseRedirect('/alunos/')
-
-#atualizar alunos
-def atualizar_alunos(request):
-    print("FUNÇÃO OK")
-    if request.method == 'GET':
-        if request.user.is_authenticated and request.user.is_active:
-            id = request.GET['atualizar']
-            aluno = Aluno.objects.get(id_aluno=id)
-            print("GET OK")
-            return render(request, 'pages/alunos/atualizar_alunos.html', {'id_aluno': id, 'aluno': aluno})
-    if request.method =='POST':
-        print("POST OK")
-        if 'att' in request.POST:
-            id = request.POST.get("att")
-            aluno = Aluno.objects.get(id_aluno=id)
-            aluno.nome = request.POST.get('nome-aluno')
-            aluno.serie_turma = request.POST.get('turma-aluno')
-            aluno.data_matricula = request.POST.get('data-aluno')
-
-            aluno = Aluno(id_aluno=id, nome=aluno.nome, serie_turma=aluno.serie_turma, data_matricula=aluno.data_matricula)
-            aluno.save()
-            print("ATT OK")
-            return HttpResponseRedirect('/alunos/')
-
-
 #editar alunos
-    
 def editar_alunos(request):
     if request.method == 'GET':
         if request.user.is_authenticated and request.user.is_active:
             alunos = Aluno.objects.all()
-            return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos})
+            return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos, 'check': 0, 'name': '', 'serie_turma': '', 'data_matricula': '', 'id':''})
         else:
             return HttpResponseRedirect('/')
     elif request.method == 'POST':
@@ -123,14 +76,57 @@ def editar_alunos(request):
             aluno.delete()
             return HttpResponseRedirect('/editar_alunos/')
         if 'atualizar' in request.POST:
-            return render(request, 'pages/alunos/atualizar_alunos/')
+            alunos = Aluno.objects.all()
+            id = request.POST.get("atualizar")
+            aluno = Aluno.objects.get(id_aluno=id)
+            nome = aluno.nome
+            serie_turma = aluno.serie_turma
+            data_matricula = aluno.data_matricula
+            return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos, 'check': 1, 'name': nome, 'serie_turma': serie_turma, 'data_matricula': data_matricula, 'id':id})
+        
+        if 'atualizar_confirmar' in request.POST:
+            alunos = Aluno.objects.all()
+            id = request.POST.get("atualizar_confirmar")
+            aluno = Aluno.objects.get(id_aluno=id)
+            aluno.nome = request.POST.get("nome-aluno")
+            aluno.serie_turma = request.POST.get("turma-aluno")
+            aluno.data_matricula = request.POST.get("data-aluno")
+            aluno.save()
+            return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos, 'check': 0, 'name': '', 'serie_turma': '', 'data_matricula': '', 'id':''})
+        if 'atualizar_cancelar' in request.POST:
+                alunos = Aluno.objects.all()
+                return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos, 'check': 0, 'name': '', 'serie_turma': '', 'data_matricula': '', 'id':''})
 
 def alunos(request):
     if request.user.is_authenticated and request.user.is_active:
-        alunos = Aluno.objects.all()
-        return render(request, 'pages/alunos.html', {'alunos': alunos})
-    else:
-        return HttpResponseRedirect('/')
+        if request.method == 'GET':
+            alunos = Aluno.objects.all()
+            return render(request, 'pages/alunos.html', {'alunos': alunos, 'check': 0})
+        elif request.method == 'POST':
+            if 'cadastrar' in request.POST:
+                alunos = Aluno.objects.all()
+                return render(request, 'pages/alunos.html', {'alunos': alunos, 'check': 1})
+            elif 'cadastrar_confirmar' in request.POST:
+                alunos = Aluno.objects.all()
+                materias = ['portugues', 'matematica', 'historia', 'geografia', 'ciencias', 'ingles']
+                aluno_name = request.POST.get('nome-aluno')
+                aluno_turma = request.POST.get('turma-aluno')
+                data_matriculado = request.POST.get('data-aluno')
+
+                aluno = Aluno(nome=aluno_name,serie_turma=aluno_turma,data_matricula=data_matriculado)
+                aluno.save()
+
+                for materia in materias:
+                    mateira_nova = Materia(aluno=aluno, nome_materia=materia, faltas=0, notas=0)
+                    mateira_nova.save()
+
+                return render(request, 'pages/alunos.html', {'alunos': alunos, 'check': 0})
+            elif 'cadastrar_cancelar' in request.POST:
+                alunos = Aluno.objects.all()
+                return render(request, 'pages/alunos.html', {'alunos': alunos, 'check': 0})
+
+        else:
+            return HttpResponseRedirect('/')
 
 
 # disciplinas
@@ -203,22 +199,24 @@ def faltas(request):
             
         elif(request.method == 'POST'):
             if request.POST.get('faltas_plus') != None:
-                materia_escolhida = request.POST.get('faltas_plus')
-                id_aluno = request.POST.get('id_aluno')
+                id_materia = request.POST.get('faltas_plus')
+                materia_dados = Materia.objects.filter(id=id_materia).first()
+
+                materia_escolhida = materia_dados.nome_materia
+                id_aluno = materia_dados.aluno.id_aluno
 
                 aluno = Aluno.objects.get(id_aluno=id_aluno)
-                materias = Materia.objects.all()
-
-                # adiciona uma falta na materia escolhida
                 materia = Materia.objects.filter(aluno=aluno, nome_materia=materia_escolhida).first()
+
                 materia.faltas += 1
                 materia.save()
-            
                 return HttpResponseRedirect('/faltas/?faltas='+materia_escolhida)
             elif request.POST.get('faltas_minus') != None:
-                print("FALTA MINUS")
-                materia_escolhida = request.POST.get('faltas_minus')
-                id_aluno = request.POST.get('id_aluno')
+                id_materia = request.POST.get('faltas_minus')
+                materia_dados = Materia.objects.filter(id=id_materia).first()
+
+                materia_escolhida = materia_dados.nome_materia
+                id_aluno = materia_dados.aluno.id_aluno
 
                 aluno = Aluno.objects.get(id_aluno=id_aluno)
                 materias = Materia.objects.all()
