@@ -258,8 +258,9 @@ def faltas(request):
 
                 # remove uma falta na materia escolhida
                 materia = Materia.objects.filter(aluno=aluno, nome_materia=materia_escolhida).first()
-                materia.faltas -= 1
-                materia.save()
+                if materia.faltas > 0:
+                    materia.faltas -= 1
+                    materia.save()
                 return HttpResponseRedirect('/faltas/?faltas='+materia_escolhida)
     else:
         return HttpResponseRedirect('/')
