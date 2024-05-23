@@ -21,40 +21,43 @@ def home(request):
 #login
 def login(request):
     if request.method == 'GET':
-        return render(request, 'pages/login.html')
+        return render(request, 'pages/login.html', {'check': 0 })
     elif request.method == 'POST':
-        name = request.POST.get('name')
-        senha = request.POST.get('senha')
-        
-        user = authenticate(request,username=name,password=senha)
+        if 'login' in request.POST:
+            name = request.POST.get('name')
+            senha = request.POST.get('senha')
+            
+            user = authenticate(request,username=name,password=senha)
 
-        if user:
-            lg(request, user)
-            return HttpResponseRedirect('/home')
-        else:
-            print(user)
-            return HttpResponse('email ou senha invalidos')
+            if user:
+                lg(request, user)
+                return HttpResponseRedirect('/home/')
+            else:
+                print('oi')
+                return render(request, 'pages/login.html',{'check': 1 } ) 
+        elif 'ok' in request.POST:
+                return render(request, 'pages/login.html',{'check':0 } )
         
         
 def cadastro_prof(request):
     if request.method == 'GET':
-        return render(request, 'pages/cadastro.html' )
+        return render(request, 'pages/cadastro.html', {'check': 0, 'message':''})
     elif request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        senha = request.POST.get('senha')
+        if 'cadastrar' in request.POST:
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            senha = request.POST.get('senha')
 
-        user = User.objects.filter(username=name).first()
+            user = User.objects.filter(username=name).first()
 
-        if user:
-            messages.success(request, 'Usuário já existente.')
-            return HttpResponseRedirect('/cadastro/')
-        else:
-            user = User.objects.create_user(username=name,email=email,password=senha)
-            user.save()
-
-            messages.success(request, 'Usuário cadastrado!')
-        return HttpResponseRedirect('/')
+            if user:
+                return render(request, 'pages/cadastro.html', {'check': 1, 'message':'Usuário já existente.'})
+            else:
+                user = User.objects.create_user(username=name,email=email,password=senha)
+                user.save()
+                return HttpResponseRedirect('/')
+        elif 'ok' in request.POST:
+            return render(request, 'pages/cadastro.html', {'check': 0, 'message':''})
 
 #alunos
 def alunos(request):
@@ -69,7 +72,8 @@ def alunos(request):
             elif 'cadastrar_confirmar' in request.POST:
                 materias = ['portugues', 'matematica', 'historia', 'geografia', 'ciencias', 'ingles']
                 aluno_name = request.POST.get('nome-aluno')
-                aluno_turma = request.POST.get('turma-aluno')
+                nome_turma = request.POST.get('turma-aluno')
+                aluno_turma = SerieTurma.objects.filter(nome_turma=nome_turma).first()
                 data_matriculado = request.POST.get('data-aluno')
 
                 aluno = Aluno(nome=aluno_name,serie_turma=aluno_turma,data_matricula=data_matriculado)
@@ -193,22 +197,20 @@ def notas(request):
     
             return render(request, 'pages/disciplinas/notas.html', {'materia': dados_escolhidos, 'notas': materia_escolhida})     
         
-        if(request.method == 'POST'):
-            if 'editar_notas' in request.POST:
-                return render(request, 'pages/disciplinas/editar_nota.html')
     else:
         return HttpResponseRedirect('/')
     
 def editar_nota(request):
     if request.user.is_authenticated and request.user.is_active:
         if(request.method == 'GET'):
-            materia_id = request.POST.get('editar_nota')
+            materia_id = request.GET.get('editar_notas')
+            print(materia_id)
             materia = Materia.objects.filter(id = materia_id).first()
             return render(request, 'pages/disciplinas/editar_nota.html', {'materia': materia})     
         
         if(request.method == 'POST'):
             if "att" in request.POST:
-                nota=request.post.get("att")
+                nota=request.POST.get("att")
                 materia.notas=nota
                 materia.save()
                 return HttpResponseRedirect('/notas/')

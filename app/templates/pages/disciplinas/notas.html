@@ -12,7 +12,6 @@
   {% include "pages/header.html" %} {#Menu do programa#} 
   <br><br>
   <div class="table-fundo">
-    <form method="POST" action="{% url 'notas' %}"> {% csrf_token %}
     <table id="alunotable">
       <thead>
         <tr>
@@ -31,13 +30,13 @@
                 <td>{{ materia.aluno.nome }}</td>
                 <td>{{ materia.aluno.serie_turma.nome_turma }}</td>
                 <td>{{ materia.notas }}</td>
-                <form method= "GET" action="{% url 'editar_nota' %}"> {% csrf_token %}
+                <form action="{% url 'editar_nota' %}"method="GET"> {% csrf_token %}
                     <td><button class="cadastrar-botao" name="editar_notas" value="{{ materia.id }}">Editar</button></td>
-            </tr>
+                </tr>
+                </form>
         {% endfor %}
       </tbody>
     </table>
-    </form>
   </div>
 
   <script>
