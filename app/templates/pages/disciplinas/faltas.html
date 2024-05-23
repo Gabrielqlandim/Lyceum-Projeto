@@ -29,7 +29,7 @@
             <tr>
                 <td>{{ materia.aluno.id_aluno }}</td>
                 <td>{{ materia.aluno.nome }}</td>
-                <td>{{ materia.aluno.serie_turma }}</td>
+                <td>{{ materia.aluno.serie_turma.nome_turma }}</td>
                 <td>{{ materia.faltas }}</td>
                 <td><button type="submit" name='faltas_plus' value="{{ materia.id }}" data-id-aluno="{{ materia.aluno.id_aluno }}" class="btn btn-primary">+</button></td>
                 <td><button type="submit" name='faltas_minus' value="{{ materia.id }}" data-id-aluno="{{ materia.aluno.id_aluno }}" class="btn btn-primary">-</button></td>

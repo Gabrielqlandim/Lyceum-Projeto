@@ -60,12 +60,10 @@ header {
               </div>
               <div class="form-group">
                   <label for="turma-aluno">Turma:</label>
-                  <select name="turma-aluno" id="turma-aluno" class="form-control" value="{{serie_turma}}" required>
-                      <option value="1-A" {% if '1-A' == serie_turma %}selected{% endif %}>1-A</option>
-                      <option value="2-A" {% if '2-A' == serie_turma %}selected{% endif %}>2-A</option>
-                      <option value="3-A" {% if '3-A' == serie_turma %}selected{% endif %}>3-A</option>
-                      <option value="4-A" {% if '4-A' == serie_turma %}selected{% endif %}>4-A</option>
-                      <option value="5-A" {% if '5-A' == serie_turma %}selected{% endif %}>5-A</option>
+                  <select name="turma-aluno" id="turma-aluno" class="form-control" value="{{aluno.serie_turma.nome_turma}}" required>
+                    {% for turma in turmas %}
+                      <option value={{turma.nome_turma}} {% if turma.nome_turma == aluno.serie_turma.nome_turma %}selected{% endif %}>{{turma.nome_turma}}</option>
+                    {% endfor %}
                   </select>
               </div>
               <div class="form-group">
@@ -97,7 +95,7 @@ header {
                 <tr>
                     <td>{{ aluno.id_aluno }}</td>
                     <td>{{ aluno.nome }}</td>
-                    <td>{{ aluno.serie_turma }}</td>
+                    <td>{{ aluno.serie_turma.nome_turma }}</td>
                     <td>{{ aluno.data_matricula }}</td>
                     <form method= "POST" action="{% url 'editar_alunos' %}"> {% csrf_token %}
                     <td><button class="cadastrar-botao" name="atualizar" value="{{ aluno.id_aluno }}">Atualizar</button></td>

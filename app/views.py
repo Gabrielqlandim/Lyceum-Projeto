@@ -8,6 +8,7 @@ from django.shortcuts import render
 
 from .models import Aluno
 from .models import Materia
+from .models import SerieTurma
 
 from datetime import date
 #home
@@ -55,12 +56,51 @@ def cadastro_prof(request):
             messages.success(request, 'Usuário cadastrado!')
         return HttpResponseRedirect('/')
 
+#alunos
+def alunos(request):
+    if request.user.is_authenticated and request.user.is_active:
+        turmas = SerieTurma.objects.all()
+        alunos = Aluno.objects.all()
+        if request.method == 'GET':
+            return render(request, 'pages/alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 0, 'turma_check': 0})
+        elif request.method == 'POST':
+            if 'cadastrar' in request.POST:
+                return render(request, 'pages/alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 1, 'turma_check': 0})
+            elif 'cadastrar_confirmar' in request.POST:
+                materias = ['portugues', 'matematica', 'historia', 'geografia', 'ciencias', 'ingles']
+                aluno_name = request.POST.get('nome-aluno')
+                aluno_turma = request.POST.get('turma-aluno')
+                data_matriculado = request.POST.get('data-aluno')
+
+                aluno = Aluno(nome=aluno_name,serie_turma=aluno_turma,data_matricula=data_matriculado)
+                aluno.save()
+
+                for materia in materias:
+                    mateira_nova = Materia(aluno=aluno, nome_materia=materia, faltas=0, notas=0)
+                    mateira_nova.save()
+
+                return render(request, 'pages/alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 0, 'turma_check': 0})
+            elif 'criar_turma' in request.POST:
+                return render(request, 'pages/alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 0, 'turma_check': 1})
+            elif 'criar_turma_confirmar' in request.POST:
+                nome = request.POST.get('nome-turma')
+                serie_turma = SerieTurma(nome_turma=nome)
+                serie_turma.save()
+                return render(request, 'pages/alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 0, 'turma_check': 0})
+            elif 'cancelar' in request.POST:
+                return render(request, 'pages/alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 0, 'turma_check': 0})
+
+        else:
+            return HttpResponseRedirect('/')
+
+
 #editar alunos
 def editar_alunos(request):
+    turmas = SerieTurma.objects.all()
+    alunos = Aluno.objects.all()
     if request.method == 'GET':
         if request.user.is_authenticated and request.user.is_active:
-            alunos = Aluno.objects.all()
-            return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos, 'check': 0, 'name': '', 'serie_turma': '', 'data_matricula': '', 'id':''})
+            return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 0, 'name': '', 'serie_turma': '', 'data_matricula': '', 'id':''})
         else:
             return HttpResponseRedirect('/')
     elif request.method == 'POST':
@@ -76,58 +116,27 @@ def editar_alunos(request):
             aluno.delete()
             return HttpResponseRedirect('/editar_alunos/')
         if 'atualizar' in request.POST:
-            alunos = Aluno.objects.all()
             id = request.POST.get("atualizar")
             aluno = Aluno.objects.get(id_aluno=id)
             nome = aluno.nome
             serie_turma = aluno.serie_turma
             data_matricula = aluno.data_matricula
-            return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos, 'check': 1, 'name': nome, 'serie_turma': serie_turma, 'data_matricula': data_matricula, 'id':id})
+            return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 1, 'name': nome, 'serie_turma': serie_turma, 'data_matricula': data_matricula, 'id':id})
         
         if 'atualizar_confirmar' in request.POST:
-            alunos = Aluno.objects.all()
             id = request.POST.get("atualizar_confirmar")
             aluno = Aluno.objects.get(id_aluno=id)
+
+            nome_turma = request.POST.get("turma-aluno")
+            turma_selecionada = SerieTurma.objects.filter(nome_turma=nome_turma).first()
+
             aluno.nome = request.POST.get("nome-aluno")
-            aluno.serie_turma = request.POST.get("turma-aluno")
+            aluno.serie_turma = turma_selecionada
             aluno.data_matricula = request.POST.get("data-aluno")
             aluno.save()
-            return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos, 'check': 0, 'name': '', 'serie_turma': '', 'data_matricula': '', 'id':''})
+            return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 0, 'name': '', 'serie_turma': '', 'data_matricula': '', 'id':''})
         if 'atualizar_cancelar' in request.POST:
-                alunos = Aluno.objects.all()
-                return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos, 'check': 0, 'name': '', 'serie_turma': '', 'data_matricula': '', 'id':''})
-
-def alunos(request):
-    if request.user.is_authenticated and request.user.is_active:
-        if request.method == 'GET':
-            alunos = Aluno.objects.all()
-            return render(request, 'pages/alunos.html', {'alunos': alunos, 'check': 0})
-        elif request.method == 'POST':
-            if 'cadastrar' in request.POST:
-                alunos = Aluno.objects.all()
-                return render(request, 'pages/alunos.html', {'alunos': alunos, 'check': 1})
-            elif 'cadastrar_confirmar' in request.POST:
-                alunos = Aluno.objects.all()
-                materias = ['portugues', 'matematica', 'historia', 'geografia', 'ciencias', 'ingles']
-                aluno_name = request.POST.get('nome-aluno')
-                aluno_turma = request.POST.get('turma-aluno')
-                data_matriculado = request.POST.get('data-aluno')
-
-                aluno = Aluno(nome=aluno_name,serie_turma=aluno_turma,data_matricula=data_matriculado)
-                aluno.save()
-
-                for materia in materias:
-                    mateira_nova = Materia(aluno=aluno, nome_materia=materia, faltas=0, notas=0)
-                    mateira_nova.save()
-
-                return render(request, 'pages/alunos.html', {'alunos': alunos, 'check': 0})
-            elif 'cadastrar_cancelar' in request.POST:
-                alunos = Aluno.objects.all()
-                return render(request, 'pages/alunos.html', {'alunos': alunos, 'check': 0})
-
-        else:
-            return HttpResponseRedirect('/')
-
+            return render(request, 'pages/alunos/editar_alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 0, 'name': '', 'serie_turma': '', 'data_matricula': '', 'id':''})
 
 # disciplinas
 def disciplinas(request):

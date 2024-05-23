@@ -29,7 +29,7 @@
             <tr>
                 <td>{{ materia.aluno.id_aluno }}</td>
                 <td>{{ materia.aluno.nome }}</td>
-                <td>{{ materia.aluno.serie_turma }}</td>
+                <td>{{ materia.aluno.serie_turma.nome_turma }}</td>
                 <td>{{ materia.notas }}</td>
                 <form method= "GET" action="{% url 'editar_nota' %}"> {% csrf_token %}
                     <td><button class="cadastrar-botao" name="editar_notas" value="{{ materia.id }}">Editar</button></td>
