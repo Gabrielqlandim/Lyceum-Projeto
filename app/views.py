@@ -6,6 +6,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.shortcuts import redirect
 
 from .models import Aluno
 from .models import Materia
@@ -297,7 +298,7 @@ def perfil(request):
 
         elif 'logout' in request.POST:
             logout(request)
-            return render('/')
+            return render(request, '')
 #Alunos
 def plataforma(request):
     if request.user.is_authenticated:
