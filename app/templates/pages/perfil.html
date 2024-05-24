@@ -1,14 +1,51 @@
 {% include "pages/head.html" %}
 
 <title>Perfil pessoal</title> {#perfil#}
+
+<style>
+  .form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background-color: #cbcaca;
+    width: 500px;
+    height: 420px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
 </head>
 
 <body>
   {% include "pages/header.html" %} {#Menu do programa#}
-
-
-  <h1>Perfil do professor</h1>
-  <form method="POST">{% csrf_token %}
+  <br><br>
+  <form method="POST" action="{% url 'perfil' %}">{% csrf_token %}
+    <section class="container-perfil">
+      <div class="form-professor">
+        <label for="nome-professor">Nome:</label>
+        <input type="text" id="nome-professor" name="nome" class="form-professor-input" value="{{ user.username }}"
+          required>
+      </div>
+      <div class="form-professor">
+        <label for="email-professor">Email:</label>
+        <input type="email" name="email" id="email-professor" class="form-professor-input" value="{{ user.email }}"
+          required>
+      </div>
+      <div class="form-professor">
+        <label for="senha-professor">Senha:</label>
+        <input type="password" class="form-professor-input" id="senha-professor" name="senha" placeholder="Nova Senha">
+      </div>
+      <div class="buttons">
+        <button type="submit" name="perfil_confirmar" class="btn btn-primary">Atualizar informações</button>
+      </div>
+    </section>
     <input type="submit" value="Logout" id="botao">
   </form>
 </body>

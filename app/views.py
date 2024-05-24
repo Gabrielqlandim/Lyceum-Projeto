@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login as lg
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
@@ -37,8 +38,7 @@ def login(request):
                 return render(request, 'pages/login.html',{'check': 1 } ) 
         elif 'ok' in request.POST:
                 return render(request, 'pages/login.html',{'check':0 } )
-        
-        
+               
 def cadastro_prof(request):
     if request.method == 'GET':
         return render(request, 'pages/cadastro.html', {'check': 0, 'message':''})
@@ -96,7 +96,6 @@ def alunos(request):
 
         else:
             return HttpResponseRedirect('/')
-
 
 #editar alunos
 def editar_alunos(request):
@@ -217,7 +216,6 @@ def editar_nota(request):
     else:
         return HttpResponseRedirect('/')
     
-
 def faltas(request):
     if request.user.is_authenticated and request.user.is_active:
         if(request.method == 'GET'):
@@ -274,18 +272,32 @@ def calendario_academico(request):
     else:
         return HttpResponseRedirect('/')
 
-
+@login_required
 def perfil(request):
     if request.method == 'GET':
-        if request.user.is_authenticated and request.user.is_active:
-            return render(request, 'pages/perfil.html')
-        else:
-            return HttpResponse('Você precisa estar logado!')
-    if request.method == 'POST':
-        user = User.objects.filter().first()
-        logout(request)
-        return HttpResponseRedirect('/')
+        return render(request, 'pages/perfil.html', {'user': request.user})
+    
+    elif request.method == 'POST':
+        user = request.user
+        if 'perfil_confirmar' in request.POST:
+            nome = request.POST.get('nome')
+            email = request.POST.get('email')
+            senha = request.POST.get('senha')
+            
+            user.username = nome
+            user.email = email
+            if senha:
+                user.set_password(senha)
+            user.save()
 
+            return render(request, 'pages/perfil.html')
+        
+        elif 'perfil_cancelar' in request.POST:
+            return render(request, 'pages/perfil.html')
+
+        elif 'logout' in request.POST:
+            logout(request)
+            return render('/')
 #Alunos
 def plataforma(request):
     if request.user.is_authenticated:
