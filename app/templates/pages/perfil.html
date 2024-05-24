@@ -3,7 +3,7 @@
 <title>Perfil pessoal</title> {#perfil#}
 
 <style>
-  .form {
+  form {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -11,14 +11,73 @@
     z-index: 10;
     background-color: #cbcaca;
     width: 500px;
-    height: 420px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .form-professor {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  .form-professor label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .form-professor-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #0056b3;
+  }
+
+  #botao {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #dc3545;
+    color: white;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  #botao:hover {
+    background-color: #c82333;
+  }
+  .input{
+    display: flex;
+    flex-direction: column;
   }
 </style>
 </head>
@@ -27,6 +86,7 @@
   {% include "pages/header.html" %} {#Menu do programa#}
   <br><br>
   <form method="POST" action="{% url 'perfil' %}">{% csrf_token %}
+    <div class = "input">
     <section class="container-perfil">
       <div class="form-professor">
         <label for="nome-professor">Nome:</label>
@@ -42,6 +102,7 @@
         <label for="senha-professor">Senha:</label>
         <input type="password" class="form-professor-input" id="senha-professor" name="senha" placeholder="Nova Senha">
       </div>
+    </div>
       <div class="buttons">
         <button type="submit" name="perfil_confirmar" class="btn btn-primary">Atualizar informações</button>
       </div>
