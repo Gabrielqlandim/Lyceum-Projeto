@@ -1,18 +1,38 @@
 {% include "pages/head.html" %} {#Head de todas as páginas estão em head.html#}
 <title>Editar Nota</title>
 </head>
+<style>
+    #atualizar_nota{
+        background-color: #7575757f;
+        width: 400px;
+        height: 300px;
+        text-align: center;
+        margin: auto;
+        border: 2px solid black;
+    }
+    #nota-aluno{
+        width: 200px;
+        margin-left: 100px;
+    }
+    #nome{
+        padding-top: 50px;
+    }
+</style>
 <body>
     {% include "pages/header.html" %} {#Menu do programa#}
     <div class="cadastrar_aluno">
         <div class="container">
-            <h2 id="tittle-cadastro">Atualizar Aluno{{materia.notas}}</h2><br>
+            <br><br>
+            <h2 id="tittle-cadastro">Atualizar Nota</h2><br>
             <form method="POST" action="{% url 'editar_nota' %}">
                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="nome-aluno">Nome do Aluno: {{materia.notas}}</label>
-                    <input type="number" step="0.01" class="form-control" id="nome-aluno" name="nome-aluno" value="{{materia.notas}}" required>
+                <div class="form-group" id="atualizar_nota">
+                    <h3 id="nome">{{materia.aluno.nome}}</h3>
+                    <br>
+                    <label for="nome-aluno">Nota:</label>
+                    <input type="number" step="0.01" class="form-control" id="nota-aluno" name="nota-aluno" value="{{materia.notas}}" required>
                 </div>
-                <button type="submit" name="att"  class="btn btn-primary">Atualizar</button>
+                <button type="submit" name="nota-aluno"  class="btn btn-primary">Atualizar</button>
             </form>
         </div>
     </div>

@@ -201,16 +201,20 @@ def notas(request):
         return HttpResponseRedirect('/')
     
 def editar_nota(request):
+    print("EDITAR NOTA")
     if request.user.is_authenticated and request.user.is_active:
         if(request.method == 'GET'):
+            print("GET")
             materia_id = request.GET.get('editar_notas')
-            print(materia_id)
             materia = Materia.objects.filter(id = materia_id).first()
+            print(materia.notas)
             return render(request, 'pages/disciplinas/editar_nota.html', {'materia': materia})     
         
         if(request.method == 'POST'):
+            print("POST")
             if "att" in request.POST:
-                nota=request.POST.get("att")
+                print("ATT")
+                nota=request.POST.get("nota-aluno")
                 materia.notas=nota
                 materia.save()
                 return HttpResponseRedirect('/notas/')
