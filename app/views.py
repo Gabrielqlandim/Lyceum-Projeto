@@ -224,7 +224,7 @@ def editar_nota(request):
                 
                 materia.notas=nova_nota
                 materia.save()
-                return HttpResponseRedirect('/notas/')
+                return render(request, 'pages/disciplinas/notas.html')
     else:
         return HttpResponseRedirect('/')
     
