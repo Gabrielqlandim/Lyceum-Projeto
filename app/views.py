@@ -207,14 +207,17 @@ def editar_nota(request):
             print("GET")
             materia_id = request.GET.get('editar_notas')
             materia = Materia.objects.filter(id = materia_id).first()
+            teste=1.0
+            nota=str(materia.notas)
             print(materia.notas)
-            return render(request, 'pages/disciplinas/editar_nota.html', {'materia': materia})     
+            return render(request, 'pages/disciplinas/editar_nota.html', {'materia': materia, 'nota': nota})
         
         if(request.method == 'POST'):
             print("POST")
-            if "att" in request.POST:
+            if "nota-aluno" in request.POST:
                 print("ATT")
                 nota=request.POST.get("nota-aluno")
+                print(nota)
                 materia.notas=nota
                 materia.save()
                 return HttpResponseRedirect('/notas/')
