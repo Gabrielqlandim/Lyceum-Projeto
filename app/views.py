@@ -309,7 +309,7 @@ def perfil(request):
 
         elif 'logout' in request.POST:
             logout(request)
-            return render(request, '')
+            return HttpResponseRedirect('/')
 #Alunos
 def plataforma(request):
     if request.user.is_authenticated:
