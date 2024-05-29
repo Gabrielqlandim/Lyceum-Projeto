@@ -289,8 +289,14 @@ def perfil(request):
             if senha:
                 user.set_password(senha)
             user.save()
+            
+            if senha:
+                user = authenticate(request, username=nome, password=senha)
+                if user:
+                    lg(request, user)
+            
+            return HttpResponseRedirect('/perfil/')
 
-            return render(request, 'pages/perfil.html')
         
         elif 'perfil_cancelar' in request.POST:
             return render(request, 'pages/perfil.html')
