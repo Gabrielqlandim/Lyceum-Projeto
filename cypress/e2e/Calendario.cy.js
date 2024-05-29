@@ -28,7 +28,7 @@ describe('historia calendario academico', () => {
         cy.get('#id_password').type("123");
         cy.get('.submit-row > input').click(); 
         cy.get('.model-user > th > a').click();
-        cy.get(':nth-child(10) > .action-checkbox > .action-select').check();
+        cy.get(':nth-child(5) > .action-checkbox > .action-select').check();
         cy.get('select').select('Remover usuários selecionados');
         cy.get('.button').click();
         cy.get('div > [type="submit"]').click();
@@ -60,7 +60,7 @@ describe('historia calendario academico', () => {
         cy.get('#id_password').type("123");
         cy.get('.submit-row > input').click(); 
         cy.get('.model-user > th > a').click();
-        cy.get(':nth-child(10) > .action-checkbox > .action-select').check();
+        cy.get(':nth-child(5) > .action-checkbox > .action-select').check();
         cy.get('select').select('Remover usuários selecionados');
         cy.get('.button').click();
         cy.get('div > [type="submit"]').click();
