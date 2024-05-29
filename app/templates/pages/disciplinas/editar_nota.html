@@ -1,0 +1,50 @@
+{% include "pages/head.html" %} {#Head de todas as páginas estão em head.html#}
+<title>Editar Nota</title>
+</head>
+<style>
+    #atualizar_nota{
+        background-color: #7575757f;
+        width: 400px;
+        height: 300px;
+        text-align: center;
+        margin: auto;
+        border: 1px solid black;
+        align-items: center;
+    }
+    #nota-aluno{
+        width: 200px;
+        margin-left: 100px;
+    }
+    #nome{
+        padding-top: 50px;
+    }
+    #btn{
+        margin: auto;
+        text-align: center;
+        width: 95px;
+    }
+    #butao{
+        margin-left: 0%;
+    }
+</style>
+<body>
+    {% include "pages/header.html" %} {#Menu do programa#}
+    <div class="cadastrar_aluno">
+        <div class="container">
+            <br><br>
+            <h2 id="tittle-cadastro">Atualizar Nota</h2><br>
+            <form method="POST" action="{% url 'editar_nota' %}">
+                {% csrf_token %}
+                <div class="form-group" id="atualizar_nota">
+                    <h3 id="nome">{{materia.aluno.nome}}</h3>
+                    <br>
+                    <label for="nome-aluno">Nota: {{materia.notas}}</label>
+                    <input type="number" step="0.01" class="form-control" id="nota-aluno" name="nova_nota" value="{{nota}}" required>
+                    <br>
+                    <div id="btn"><button type="submit" name="nota-aluno" value="{{materia.id}}" id="butao" class="btn btn-primary">Atualizar</button></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,12 +1,83 @@
 {% include "pages/head.html" %} {#Head de todas as páginas estão em head.html#}
-
+{% load static %}
 <title>Editar Alunos</title> {#Aluno#}
 </head>
+<style>
+  .cadastrar_aluno {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background-color: #cbcaca;
+    width: 500px;
+    height: 420px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
 
+.background-dark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Cor preta com 50% de opacidade */
+  z-index: 8; /* Um valor menor que o de .cadastrar_aluno */
+}
+
+header {
+  z-index: 9;
+  /* restante do seu código CSS */
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+</style>
 <body>
-
   {% include "pages/header.html" %} {#Menu do programa#} 
   <br><br>
+  {% if check == 1 %}
+  <div class="background-dark">
+  <div class="cadastrar_aluno">
+  {% else %}
+  <div hidden class="background-dark">
+  <div hidden class="cadastrar_aluno">
+  {% endif %}
+      <div class="container">
+          <h2 id="tittle-cadastro">Atualizar Aluno</h2><br>
+          <form method="POST" action="{% url 'editar_alunos' %}">
+              {% csrf_token %}
+              <div class="form-group">
+                  <label for="nome-aluno">Nome do Aluno:</label>
+                  <input type="text" class="form-control" id="nome-aluno" name="nome-aluno" value="{{name}}" required>
+              </div>
+              <div class="form-group">
+                  <label for="turma-aluno">Turma:</label>
+                  <select name="turma-aluno" id="turma-aluno" class="form-control" value="{{aluno.serie_turma.nome_turma}}" required>
+                    {% for turma in turmas %}
+                      <option value={{turma.nome_turma}} {% if turma.nome_turma == aluno.serie_turma.nome_turma %}selected{% endif %}>{{turma.nome_turma}}</option>
+                    {% endfor %}
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="data-aluno">Data de Matricula:</label>
+                  <input type="date" class="form-control" id="data-aluno" name="data-aluno" value="{{data_matricula|date:'Y-m-d'}}" required>
+              </div>
+              <div class="buttons">
+              <button type="submit" name="atualizar_confirmar" value="{{id}}" class="btn btn-primary">Atualizar</button>
+              <button type="submit" formnovalidate name="atualizar_cancelar" class="btn btn-primary">Cancelar</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
   <div class="table-fundo">
       <table>
         <thead>
@@ -24,9 +95,9 @@
                 <tr>
                     <td>{{ aluno.id_aluno }}</td>
                     <td>{{ aluno.nome }}</td>
-                    <td>{{ aluno.serie_turma }}</td>
+                    <td>{{ aluno.serie_turma.nome_turma }}</td>
                     <td>{{ aluno.data_matricula }}</td>
-                    <form method= "GET" action="{% url 'atualizar_alunos' %}"> {% csrf_token %}
+                    <form method= "POST" action="{% url 'editar_alunos' %}"> {% csrf_token %}
                     <td><button class="cadastrar-botao" name="atualizar" value="{{ aluno.id_aluno }}">Atualizar</button></td>
                     </form>
                     <form method="POST" action="{% url 'editar_alunos' %}"> {% csrf_token %}

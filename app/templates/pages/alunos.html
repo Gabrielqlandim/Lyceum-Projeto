@@ -2,10 +2,140 @@
 
 <title>Portal dos Alunos</title> {#Aluno#}
 </head>
+<style>
+  .cadastrar_aluno {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background-color: #cbcaca;
+    width: 500px;
+    height: 420px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
 
+.background-dark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Cor preta com 50% de opacidade */
+  z-index: 8; /* Um valor menor que o de .cadastrar_aluno */
+}
+
+header {
+  z-index: 9;
+  /* restante do seu código CSS */
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+</style>
 <body>
 
   {% include "pages/header.html" %} {#Menu do programa#} 
+
+  <!--cadastrar_aluno-->
+  {% if check == 1 %}
+  <div class="background-dark">
+  <div class="cadastrar_aluno">
+  {% else %}
+  <div hidden class="background-dark">
+  <div hidden class="cadastrar_aluno">
+  {% endif %}
+      <div class="container">
+          <h2 id="tittle-cadastro">Cadastrar Aluno</h2><br>
+          <form method="POST" action="{% url 'alunos' %}">
+              {% csrf_token %}
+              <div class="form-group">
+                  <label for="nome-aluno">Nome do Aluno:</label>
+                  <input type="text" class="form-control" id="nome-aluno" name="nome-aluno" required>
+              </div>
+              <div class="form-group">
+                  <label for="turma-aluno">Turma:</label>
+                  <select name="turma-aluno" id="turma-aluno" class="form-control" value="{{serie_turma}}" required>
+                    {% for turma in turmas %}
+                      <option value={{turma.nome_turma}}>{{turma.nome_turma}}</option>
+                    {% endfor %}
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="data-aluno">Data de Matricula:</label>
+                  <input type="date" class="form-control" id="data-aluno" name="data-aluno" required>
+              </div>
+              <div class="buttons">
+              <button type="submit" name="cadastrar_confirmar" class="btn btn-primary">Cadastrar</button>
+              <button type="submit" formnovalidate name="cancelar" class="btn btn-primary">Cancelar</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+<!--criar_turma-->
+{% if turma_check == 1 %}
+<div class="background-dark">
+<div class="cadastrar_aluno">
+{% else %}
+<div hidden class="background-dark">
+<div hidden class="cadastrar_aluno">
+{% endif %}
+<div class="container">
+  <h2 id="tittle-cadastro">Criar Turma</h2><br>
+  <form method="POST" action="{% url 'alunos' %}">
+      {% csrf_token %}
+      <div class="form-group">
+          <label for="nome-aluno">Turma:</label>
+          <input type="text" class="form-control" id="nome-aluno" name="nome-turma" required>
+      </div>
+      <div class="buttons">
+      <button type="submit" name="criar_turma_confirmar" class="btn btn-primary">Criar Turma</button>
+      <button type="submit" formnovalidate name="cancelar" class="btn btn-primary">Cancelar</button>
+      </div>
+  </form>
+</div>
+</div>
+</div>
+
+<!--apagar_turma-->
+{% if turma_check == 2 %}
+<div class="background-dark">
+<div class="cadastrar_aluno">
+{% else %}
+<div hidden class="background-dark">
+<div hidden class="cadastrar_aluno">
+{% endif %}
+<div class="container">
+  <h2 id="tittle-cadastro">Apagar Turma</h2><br>
+  <form method="POST" action="{% url 'alunos' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="turma-aluno">Turma:</label>
+        <select name="turma-aluno" id="turma-aluno" class="form-control" required>
+          {% for turma in turmas %}
+            <option value={{turma.nome_turma}}>{{turma.nome_turma}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="buttons">
+      <button type="submit" name="apagar_turma_confirmar" class="btn btn-primary">Apagar Turma</button>
+      <button type="submit" formnovalidate name="cancelar" class="btn btn-primary">Cancelar</button>
+      </div>
+  </form>
+</div>
+</div>
+</div>
+
+
   <br><br>
   <div class="table-fundo">
     <table id="alunotable">
@@ -14,7 +144,7 @@
           <th onclick="sort(0)" id ="th-table">ID</th>
           <th onclick="sort(1)" id ="th-table">Nome</th>
           <th onclick="sort(2)" id ="th-table">Série/Turma</th>
-          <th onclick="sort(3)">Data de Matrícula</th>        
+          <th onclick="sort(3)" id ="th-table">Data de Matrícula</th>        
         </tr>
       </thead>
       <tbody>
@@ -22,7 +152,7 @@
             <tr>
                 <td>{{ aluno.id_aluno }}</td>
                 <td>{{ aluno.nome }}</td>
-                <td>{{ aluno.serie_turma }}</td>
+                <td>{{ aluno.serie_turma.nome_turma }}</td>
                 <td>{{ aluno.data_matricula }}</td>
                 </div>
             </tr>
@@ -32,14 +162,15 @@
   </div>
   <br><br>
   <div class="alunos-buttons">
-      <button id ="cadastrar-botao" class="cadastrar-botao" onclick = "cadastrar()">Cadastrar</button>
-      <button class="cadastrar-botao" onclick = "editar()">Editar</button>
+      <form method="POST" action="{% url 'alunos' %}"> {% csrf_token %}
+      <button class="cadastrar-botao" name="criar_turma">Criar Turma</button>
+      <button class="cadastrar-botao" name="apagar_turma">Apagar Turma</button>
+      <button id ="cadastrar-botao" name="cadastrar" class="cadastrar-botao">Cadastrar Aluno</button>
+      </form>
+      <button class="cadastrar-botao" onclick = "editar()">Editar Alunos</button>
   </div>
 
   <script>
-    function cadastrar(){
-      window.location.replace("{% url 'cadastrar_alunos' %}")
-    }
     function editar() {
       window.location.replace("{% url 'editar_alunos' %}")
     }

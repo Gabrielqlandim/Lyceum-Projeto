@@ -23,14 +23,14 @@
             border-radius: 30px;
         }
     </style>
-    {% include "pages/header.html" %} {#Menu do programa#}
+    {% include "pages/header.html" %} 
     <h1>Bem-vindo, {{username}}</h1>
 
     <div class="divi">
-        <p class="grid-home">Alunos</p>
-        <p class="grid-home">Disciplinas</p>
-        <p class="grid-home">Calendário Acadêmico</p>
-        <p class="grid-home">Perfil do professor</p>
+        <button class="grid-home" onclick="location.href='{% url 'alunos' %}'" type="button">Alunos</button>
+        <button class="grid-home" onclick="location.href='{% url 'disciplinas' %}'" type="button">Disciplinas</button>
+        <button class="grid-home" onclick="location.href='{% url 'calendario_academico' %}'" type="button">Calendário Acadêmico</button>
+        <button class="grid-home" onclick="location.href='{% url 'perfil' %}'" type="button">Perfil do professor</button>
     </div>
     <script src="script.js"></script>
 </body>

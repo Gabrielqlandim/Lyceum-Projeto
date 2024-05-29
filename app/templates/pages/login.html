@@ -69,6 +69,43 @@
             padding: 5px 10px;
             background-color: #c5c5b7;
         }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            background-color: #cbcaca;
+            width: 300px;
+            height: 110px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            float: right;
+            margin-top: 10px;
+        }
+
+
+        .containertext {
+            text-align: center;
+            font-size: 20px;
+        }
     </style>
     <title>Login</title>
 </head>
@@ -77,6 +114,25 @@
 
 <body>
     <header>Login</header>
+    {% if check == 1 %}
+    <div class="background-dark">
+    <div class="popup">
+    {% else %}
+    <div hidden class="background-dark">
+    <div hidden class="popup">
+    {% endif %}
+        <div class="container">
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <p class="containertext">Email ou Senha invalídos</p>
+                <div class="buttons">
+                <button type="submit" name="ok" class="btn">Ok</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+  
 
     <section>
         <br><br>
@@ -86,8 +142,7 @@
             </div>
             </p>
             <div>
-                <p>Senha: <input type="password" class="login-input" id="senha" onkeydown="verificarEnter(event)"
-                        name="senha">
+                <p>Senha: <input type="password" class="login-input" id="senha" onkeydown="verificarEnter(event)" name="senha">
             </div>
             </p>
             <p>

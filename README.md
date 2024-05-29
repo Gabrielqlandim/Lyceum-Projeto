@@ -37,17 +37,23 @@ O Study School é um projeto Django que visa criar uma plataforma de gerenciamen
 
 ## Entrega 03
 - [Diagrama de atividades](https://miro.com/app/board/uXjVKMDPzF4=/?share_link_id=958191478717)
+- [Screencast CI/CD](https://youtu.be/siPAkdh2xdk)
+- [Relatório da Programação em Par](https://docs.google.com/document/d/16EpwHZ0OlmUOi7epajKD1i2yXCiQcODgXIGaLA9vPCc/edit?usp=sharing)
+- [Screen Cast WebApp](https://youtu.be/W0hakyg9Wwg)
+- [Screen Cast Prótotipo de Baixa Fidelidade](https://www.youtube.com/watch?v=PDi84jnE3gE)
+- [Screen Cast Testes Automatizados](https://youtu.be/xu9nKGfMLQ8).
 
 Quadro Jira:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/60e5539e-a176-4c3e-ada3-ea2148485e83)
 
-
 Backlog Jira: 
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/6f0045b7-b862-4b34-a463-ed599654ad0c)
 
-
 Issue/Bug Tracker:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/195d3463-d627-4c90-b72d-79de26c99114)
+
+Diagrama de Atividades:
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/fc079f6c-844d-48c5-832d-1e01b1d4124d)
 
 
 ### Instruções de Acesso

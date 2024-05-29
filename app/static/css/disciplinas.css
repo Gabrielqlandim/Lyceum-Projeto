@@ -1,0 +1,22 @@
+.divi{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.grid-home{
+    background-color: aqua;
+    height: 100px;
+    width: 150px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+}
+
+h1 {
+    text-align: center;
+}
