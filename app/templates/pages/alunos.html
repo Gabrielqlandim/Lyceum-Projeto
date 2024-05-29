@@ -106,6 +106,35 @@ header {
 </div>
 </div>
 
+<!--apagar_turma-->
+{% if turma_check == 2 %}
+<div class="background-dark">
+<div class="cadastrar_aluno">
+{% else %}
+<div hidden class="background-dark">
+<div hidden class="cadastrar_aluno">
+{% endif %}
+<div class="container">
+  <h2 id="tittle-cadastro">Apagar Turma</h2><br>
+  <form method="POST" action="{% url 'alunos' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="turma-aluno">Turma:</label>
+        <select name="turma-aluno" id="turma-aluno" class="form-control" required>
+          {% for turma in turmas %}
+            <option value={{turma.nome_turma}}>{{turma.nome_turma}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="buttons">
+      <button type="submit" name="apagar_turma_confirmar" class="btn btn-primary">Apagar Turma</button>
+      <button type="submit" formnovalidate name="cancelar" class="btn btn-primary">Cancelar</button>
+      </div>
+  </form>
+</div>
+</div>
+</div>
+
 
   <br><br>
   <div class="table-fundo">
@@ -134,10 +163,11 @@ header {
   <br><br>
   <div class="alunos-buttons">
       <form method="POST" action="{% url 'alunos' %}"> {% csrf_token %}
-      <button id ="cadastrar-botao" name="cadastrar" class="cadastrar-botao">Cadastrar</button>
       <button class="cadastrar-botao" name="criar_turma">Criar Turma</button>
+      <button class="cadastrar-botao" name="apagar_turma">Apagar Turma</button>
+      <button id ="cadastrar-botao" name="cadastrar" class="cadastrar-botao">Cadastrar Aluno</button>
       </form>
-      <button class="cadastrar-botao" onclick = "editar()">Editar</button>
+      <button class="cadastrar-botao" onclick = "editar()">Editar Alunos</button>
   </div>
 
   <script>

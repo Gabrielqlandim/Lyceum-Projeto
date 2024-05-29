@@ -88,6 +88,18 @@ def alunos(request):
             serie_turma = SerieTurma(nome_turma=nome)
             serie_turma.save()
             return render(request, 'pages/alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 0, 'turma_check': 0})
+        
+        elif 'apagar_turma' in request.POST:
+            return render(request, 'pages/alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 0, 'turma_check': 2})
+        elif 'apagar_turma_confirmar' in request.POST:
+            nome = request.POST.get('turma-aluno')
+            turma = SerieTurma.objects.filter(nome_turma=nome).first()
+    
+            first_turma = SerieTurma.objects.exclude(id=turma.id).first()
+            Aluno.objects.filter(serie_turma=turma).update(serie_turma=first_turma)
+
+            turma.delete()
+            return render(request, 'pages/alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 0, 'turma_check': 0})
         elif 'cancelar' in request.POST:
             return render(request, 'pages/alunos.html', {'alunos': alunos, 'turmas':turmas, 'check': 0, 'turma_check': 0})
 
