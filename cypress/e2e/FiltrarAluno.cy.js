@@ -3,7 +3,7 @@ describe('historia de filtrar aluno', () => {
     let email = "teste@cesar.school";
     let senha = "123";
 
-    it('cadstro com sucesso', () => {
+    before(() => {
         cy.visit('/');
         cy.get('#cadastrar-btn').click();
         cy.get('#nome').type(nome);
@@ -11,13 +11,14 @@ describe('historia de filtrar aluno', () => {
         cy.get('#senha').type(senha);
         cy.get('#botao').click();
     })
-    it('filtrar alunos por nome em ordem alfabetica com sucesso', () => {
+
+    beforeEach(() => {
         cy.visit('/');
         cy.get('#nome').type(nome);
         cy.get('#senha').type(senha);
         cy.get('#botao').click();
-        cy.get('#aalunos').click();
-
+        
+        cy.visit('/alunos/');
         cy.get('#cadastrar-botao').click();
         cy.get('#nome-aluno').type('123123123');
         cy.get('#turma-aluno').select('1-A');
@@ -38,6 +39,10 @@ describe('historia de filtrar aluno', () => {
         cy.get('#data-aluno').click();
         cy.get('#data-aluno').type('2004-08-04');
         cy.get('[name="cadastrar_confirmar"]').click();
+    })
+
+    it('filtrar alunos por nome em ordem alfabetica com sucesso', () => {
+        cy.visit('/alunos/');
 
         cy.get('tbody > :nth-child(1) > :nth-child(2)').invoke('text').as('name_first');
 
@@ -49,11 +54,7 @@ describe('historia de filtrar aluno', () => {
         });
     })
     it('filtrar alunos por serie/turma com sucesso', () => {
-        cy.visit('/');
-        cy.get('#nome').type(nome);
-        cy.get('#senha').type(senha);
-        cy.get('#botao').click();
-        cy.get('#aalunos').click();
+        cy.visit('/alunos/');
 
         cy.get('tbody > :nth-child(1) > :nth-child(3)').invoke('text').as('class_first');
 
@@ -65,11 +66,7 @@ describe('historia de filtrar aluno', () => {
         });
     })
     it('filtrar alunos por data de matricula com sucesso', () => {
-        cy.visit('/');
-        cy.get('#nome').type(nome);
-        cy.get('#senha').type(senha);
-        cy.get('#botao').click();
-        cy.get('#aalunos').click();
+        cy.visit('/alunos/');
 
         cy.get('tbody > :nth-child(1) > :nth-child(4)').invoke('text').as('date_first');
  
@@ -81,11 +78,7 @@ describe('historia de filtrar aluno', () => {
         });
     })       
     it('filtrar alunos por id com sucesso', () => {
-        cy.visit('/');
-        cy.get('#nome').type(nome);
-        cy.get('#senha').type(senha);
-        cy.get('#botao').click();
-        cy.get('#aalunos').click();
+        cy.visit('/alunos/');
 
         cy.get('tbody > :nth-child(1) > :nth-child(1)').invoke('text').as('id_first');
         cy.get('[onclick="sort(0)"]').click(); 
@@ -96,11 +89,7 @@ describe('historia de filtrar aluno', () => {
         });
     })
     it('filtrar alunos por varios filtros com sucesso', () => {
-        cy.visit('/');
-        cy.get('#nome').type(nome);
-        cy.get('#senha').type(senha);
-        cy.get('#botao').click();
-        cy.get('#aalunos').click();
+        cy.visit('/alunos/');
 
         cy.get('tbody > :nth-child(1) > :nth-child(1)').invoke('text').as('id_first');
 
@@ -112,13 +101,17 @@ describe('historia de filtrar aluno', () => {
         cy.get('@id_first').then((id_first) => {
             cy.get('tbody > :nth-child(1) > :nth-child(1)').should('have.text', id_first);
         }); 
-        
-        cy.get('[onclick="editar()"]').click();
+    })
+
+    afterEach(() => {
+        cy.visit('/editar_alunos/')
         cy.get(':nth-child(1) > :nth-child(10) > .cadastrar-botao').click();
         cy.get(':nth-child(1) > :nth-child(10) > .cadastrar-botao').click();
         cy.get(':nth-child(1) > :nth-child(10) > .cadastrar-botao').click();
     })
-    it('apagar usuario teste', () => {
+    
+    after(() => {
+
         cy.visit('/admin/');
         cy.get('#id_username').type("adm");
         cy.get('#id_password').type("123");
@@ -128,6 +121,5 @@ describe('historia de filtrar aluno', () => {
         cy.get('select').select('Remover usuários selecionados');
         cy.get('.button').click();
         cy.get('div > [type="submit"]').click();
-        cy.get('#result_list').should('not.contain', nome);
-    })                          
-})              
+    })
+})                  
