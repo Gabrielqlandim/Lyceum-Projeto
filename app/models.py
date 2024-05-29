@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class SerieTurma(models.Model):
     id = models.AutoField(primary_key=True)
     nome_turma = models.CharField(max_length=120, null=False)
