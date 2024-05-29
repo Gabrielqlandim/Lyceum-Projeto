@@ -197,31 +197,49 @@
     </nav>
 </div>
 
-  <form method="POST" action="{% url 'perfil' %}">{% csrf_token %}
-    <div class = "cadastrarAluno">
-    <section class="container-perfil">
-      <div class="form-professor">
-        <label for="nome-professor">Nome:</label>
-        <input type="text" id="nome-professor" name="nome" class="form-professor-input" value="{{ user.username }}"
-          required>
+<body>
+  <div id="navbar">
+      <a href="{% url 'home' %}" id="theme">
+          <i class="fa-solid fa-school icon logo"></i>Study School
+      </a>
+      <nav>
+          <ul>
+              <li><a href="{% url 'alunos' %}">Alunos</a></li>
+              <li><a href="{% url 'disciplinas' %}">Disciplinas</a></li>
+              <li><a href="{% url 'calendario_academico' %}">Calendário Acadêmico</a></li>
+              <li><a href="{% url 'perfil' %}">Perfil do professor</a></li>
+          </ul>
+      </nav>
+  </div>
+
+  <form method="POST" action="{% url 'perfil' %}">
+      {% csrf_token %}
+      <div class="cadastrarAluno">
+          <section class="container-perfil">
+              <div class="form-professor">
+                  <label for="nome-professor">Nome:</label>
+                  <input type="text" id="nome-professor" name="nome" class="form-professor-input" value="{{ user.username }}" required>
+              </div>
+
+              <div class="form-professor">
+                  <label for="email-professor">Email:</label>
+                  <input type="email" name="email" id="email-professor" class="form-professor-input" value="{{ user.email }}" required>
+              </div>
+              <div class="form-professor">
+                  <label for="senha-professor">Senha:</label>
+                  <input type="password" class="form-professor-input" id="senha-professor" name="senha" value="">
+              </div>
+          </section>
+          <div class="buttons">
+              <button type="submit" name="perfil_confirmar" class="btn btn-primary">Atualizar informações</button>
+          </div>
       </div>
-      
-      <div class="form-professor">
-        <label for="email-professor">Email:</label>
-        <input type="email" name="email" id="email-professor" class="form-professor-input" value="{{ user.email }}"
-          required>
-      </div>
-      <div class="form-professor">
-        <label for="senha-professor">Senha:</label>
-        <input type="password" class="form-professor-input" id="senha-professor" name="senha" placeholder="Nova Senha">
-      </div>
-    </div>
-      <div class="buttons">
-        <button type="submit" name="perfil_confirmar" class="btn btn-primary">Atualizar informações</button>
-      </div>
-    </section>
-    <input type="submit" name="logout" value="Logout" id="botao">
+      <input type="submit" name="logout" value="Logout" id="botao">
   </form>
+  
+  {% if message %}
+      <div class="message">{{ message }}</div>
+  {% endif %}
 </body>
 
 </html>
