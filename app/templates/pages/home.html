@@ -24,7 +24,7 @@
         }
     </style>
     {% include "pages/header.html" %} 
-    <h1>Bem-vindo, {{username}}</h1>
+    <h1>Bem-vindo, {{request.user.username}}</h1>
 
     <div class="divi">
         <button class="grid-home" onclick="location.href='{% url 'alunos' %}'" type="button">Alunos</button>

@@ -54,7 +54,7 @@ def cadastro_prof(request):
 @login_required
 def home(request):
     user = request.user
-    return render(request, 'pages/home.html', {'username': user})
+    return render(request, 'pages/home.html')
 
 # visualizar alunos // cadastrar alunos // criar turma
 @login_required
