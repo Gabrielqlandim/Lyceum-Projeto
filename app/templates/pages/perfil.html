@@ -182,22 +182,6 @@
 </head>
 
 <body>
-  <br><br>
-  <div id="navbar">
-    <a href="{% url 'home' %}" id="theme">
-        <i class="fa-solid fa-school icon logo"></i>Study School
-    </a>
-    <nav>
-        <ul>
-            <li><a href="{% url 'alunos' %}">Alunos</a></li>
-            <li><a href="{% url 'disciplinas' %}">Disciplinas</a></li>
-            <li><a href="{% url 'calendario_academico' %}">Calendário Acadêmico</a></li>
-            <li><a href="{% url 'perfil' %}">Perfil do professor</a></li>
-        </ul>
-    </nav>
-</div>
-
-<body>
   <div id="navbar">
       <a href="{% url 'home' %}" id="theme">
           <i class="fa-solid fa-school icon logo"></i>Study School
@@ -207,7 +191,7 @@
               <li><a href="{% url 'alunos' %}">Alunos</a></li>
               <li><a href="{% url 'disciplinas' %}">Disciplinas</a></li>
               <li><a href="{% url 'calendario_academico' %}">Calendário Acadêmico</a></li>
-              <li><a href="{% url 'perfil' %}">Perfil do professor</a></li>
+              <li><a href="{% url 'perfil' %}">{{request.user.username}}</a></li>
           </ul>
       </nav>
   </div>

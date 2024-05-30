@@ -133,3 +133,41 @@ table {
 #th-table{
     cursor: pointer;
 }
+
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+
+    header {
+        padding: 20px; /* Reduz o padding do cabeçalho */
+    }
+
+    nav ul li {
+        margin-right: 10px; /* Reduz a margem entre os itens do menu */
+    }
+
+    .divi {
+        flex-direction: column; /* Altera o layout para coluna */
+        align-items: center; /* Centraliza os botões */
+    }
+
+    .grid-home {
+        width: 90%; /* Define a largura dos botões */
+        margin: 10px 0; /* Adiciona espaço entre os botões */
+    }
+
+    .headerlinks {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        display: block;
+        text-align: left;
+    }
+
+    #useremail {
+        display: none;
+    }
+}

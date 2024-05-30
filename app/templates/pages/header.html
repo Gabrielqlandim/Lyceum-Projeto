@@ -1,28 +1,16 @@
-<style> 
-    .user {
-        float: right;
-        align-items: center;
-        justify-content: right;
-        margin-right: 20px;
-    }
-</style>
-
 <header>
     <a href="{% url 'home' %}" class='logo'>
         <h1><i class="fa-solid fa-school icon"></i>Study School</h1>
     </a>
 
-    <div class="user">
-        <p>{{request.user.username}} </p>
-        <p>{{request.user.email}} </p>
-    </div>
+    <div class="headerlinks">
     <nav>
         <ul>
             <li><a id="aalunos" href="{% url 'alunos' %}">Alunos</a></li>
             <li><a id="adisciplinas" href="{% url 'disciplinas' %}">Disciplinas</a></li>
             <li><a id="acalendario" href="{% url 'calendario_academico' %}">Calendário Acadêmico</a></li>
-            <li><a id="aprofessor" href="{% url 'perfil' %}">Perfil do professor</a></li>
+            <li><a id="aprofessor" href="{% url 'perfil' %}">{{request.user.username}}</a></li>
         </ul>
     </nav>
-
+    </div>
 </header>

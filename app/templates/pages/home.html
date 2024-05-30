@@ -30,7 +30,7 @@
         <button class="grid-home" onclick="location.href='{% url 'alunos' %}'" type="button">Alunos</button>
         <button class="grid-home" onclick="location.href='{% url 'disciplinas' %}'" type="button">Disciplinas</button>
         <button class="grid-home" onclick="location.href='{% url 'calendario_academico' %}'" type="button">Calendário Acadêmico</button>
-        <button class="grid-home" onclick="location.href='{% url 'perfil' %}'" type="button">Perfil do professor</button>
+        <button class="grid-home" onclick="location.href='{% url 'perfil' %}'" type="button">{{request.user.username}}</button>
     </div>
     <script src="script.js"></script>
 </body>
