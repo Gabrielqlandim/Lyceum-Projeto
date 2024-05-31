@@ -39,6 +39,61 @@ header {
   gap: 20px;
   margin-top: 20px;
 }
+
+@media screen and (max-width: 600px) {
+  .cadastrar_aluno {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .buttons {
+    gap: 5px;
+  }
+
+  .alunos-buttons {
+    display: block;
+    justify-content: center;
+    margin: 20px;
+  }
+
+  .cadastrar-botao {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .table-fundo {
+    width: 95%;
+  }
+
+  #alunotable {
+    display: block;
+    overflow-x: auto;
+  }
+
+  th, td {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  th {
+    text-align: right;
+  }
+
+  td {
+    text-align: left;
+    position: relative;
+  }
+
+  td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 10px;
+    white-space: nowrap;
+  }
+}
 </style>
 <body>
 

@@ -1,8 +1,44 @@
+<style> 
+    .user {
+        position: absolute;
+        right: 20px;
+        top: 50px;
+        text-align: right;
+    }
+
+    #header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #f8f8f8;
+        position: relative;
+    }
+
+    .headerlinks nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+    }
+
+    @media screen and (max-width: 600px) {
+        .user {
+            display: none;
+        }
+      }
+      
+</style>
+
 <header>
     <a href="{% url 'home' %}" class='logo'>
         <h1><i class="fa-solid fa-school icon"></i>Study School</h1>
     </a>
 
+    <div class="user">
+        <p>{{request.user.username}}</p>
+        <p>{{request.user.email}}</p>
+    </div>
     <div class="headerlinks">
     <nav>
         <ul>
