@@ -57,7 +57,7 @@ Diagrama de Atividades:
 
 ## Entrega 04
 
-
+- [Relatório da Programação em Par](https://docs.google.com/document/d/16EpwHZ0OlmUOi7epajKD1i2yXCiQcODgXIGaLA9vPCc/edit?usp=sharing)
 
 ### Instruções de Acesso
 Para acessar e utilizar o Study School, clique no link acima e depois no botão "cadastro" para criar uma conta no sistema. Após isso, você será redirecionado para a página de login, onde deverá preencher suas informações de acordo com o cadastro recém-realizado. Assim, você conseguirá acessar a plataforma do StudySchool com sucesso.
