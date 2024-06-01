@@ -56,8 +56,23 @@ Diagrama de Atividades:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/fc079f6c-844d-48c5-832d-1e01b1d4124d)
 
 ## Entrega 04
-
+- [Diagrama de Atividades]()
+- [Screencast CI/CD](https://www.youtube.com/watch?v=7XpDdjVFH94)
+- [Screencast WebApp]()
+- [Screencast Prótotipo de Baixa Fidelidade]()
+- [Screencast Testes Automatizados]()
 - [Relatório da Programação em Par](https://docs.google.com/document/d/16EpwHZ0OlmUOi7epajKD1i2yXCiQcODgXIGaLA9vPCc/edit?usp=sharing)
+
+Quadro Jira:
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/38fd4fea-f3a6-4ed3-bc01-e1e84d75ac2f)
+
+Backlog Jira:
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/79cd169a-79f9-412a-a7f2-8645b474db38)
+
+Issue/Bug Tracker:
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/61bd5fa5-d6f0-41e5-9fcc-aba989f74287)
+
+Diagrama de Atividades:
 
 ### Instruções de Acesso
 Para acessar e utilizar o Study School, clique no link acima e depois no botão "cadastro" para criar uma conta no sistema. Após isso, você será redirecionado para a página de login, onde deverá preencher suas informações de acordo com o cadastro recém-realizado. Assim, você conseguirá acessar a plataforma do StudySchool com sucesso.
