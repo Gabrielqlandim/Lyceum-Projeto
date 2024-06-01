@@ -43,18 +43,6 @@ O Study School é um projeto Django que visa criar uma plataforma de gerenciamen
 - [Screen Cast Prótotipo de Baixa Fidelidade](https://www.youtube.com/watch?v=PDi84jnE3gE)
 - [Screen Cast Testes Automatizados](https://youtu.be/xu9nKGfMLQ8).
 
-Quadro Jira:
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/60e5539e-a176-4c3e-ada3-ea2148485e83)
-
-Backlog Jira: 
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/6f0045b7-b862-4b34-a463-ed599654ad0c)
-
-Issue/Bug Tracker:
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/195d3463-d627-4c90-b72d-79de26c99114)
-
-Diagrama de Atividades:
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/fc079f6c-844d-48c5-832d-1e01b1d4124d)
-
 ## Entrega 04
 - [Diagrama de Atividades]() FALTANDO
 - [Screencast CI/CD](https://www.youtube.com/watch?v=7XpDdjVFH94)
