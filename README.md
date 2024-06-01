@@ -55,10 +55,12 @@ Quadro Jira:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142419701/d7e30143-9eab-4c88-82b4-e54d27e5208a)
 
 Backlog Jira:
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/79cd169a-79f9-412a-a7f2-8645b474db38)
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142419701/944950dc-da74-4e73-a6e1-930640a22ae9)
 
 Issue/Bug Tracker:
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142419701/9aa51c58-5e81-45f5-9039-6f6ef30bb7a9)
+![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142419701/6b472678-528f-4d14-93f3-a7bbf8535c7f)
+
+
 
 
 ### Instruções de Acesso
