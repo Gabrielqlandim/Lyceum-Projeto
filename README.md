@@ -60,8 +60,8 @@ Backlog Jira:
 Issue/Bug Tracker:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142419701/6b472678-528f-4d14-93f3-a7bbf8535c7f)
 
-
-
+Diagrama de Atividades:
+![image (1)](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/975669e6-6151-40e2-9b0a-5247f6191047)
 
 ### Instruções de Acesso
 Para acessar e utilizar o Study School, clique no link acima e depois no botão "cadastro" para criar uma conta no sistema. Após isso, você será redirecionado para a página de login, onde deverá preencher suas informações de acordo com o cadastro recém-realizado. Assim, você conseguirá acessar a plataforma do StudySchool com sucesso.
