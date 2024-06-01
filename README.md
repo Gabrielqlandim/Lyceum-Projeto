@@ -52,13 +52,14 @@ O Study School é um projeto Django que visa criar uma plataforma de gerenciamen
 - [Relatório da Programação em Par](https://docs.google.com/document/d/16EpwHZ0OlmUOi7epajKD1i2yXCiQcODgXIGaLA9vPCc/edit?usp=sharing)
 
 Quadro Jira:
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/38fd4fea-f3a6-4ed3-bc01-e1e84d75ac2f)
+![image](![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142419701/d7e30143-9eab-4c88-82b4-e54d27e5208a)
 
 Backlog Jira:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/79cd169a-79f9-412a-a7f2-8645b474db38)
 
 Issue/Bug Tracker:
-![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/61bd5fa5-d6f0-41e5-9fcc-aba989f74287)
+![image](![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142419701/9aa51c58-5e81-45f5-9039-6f6ef30bb7a9)
+
 
 Diagrama de Atividades:
 
