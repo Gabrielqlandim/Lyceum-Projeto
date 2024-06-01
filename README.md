@@ -56,11 +56,11 @@ Diagrama de Atividades:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/fc079f6c-844d-48c5-832d-1e01b1d4124d)
 
 ## Entrega 04
-- [Diagrama de Atividades]()
+- [Diagrama de Atividades]() FALTANDO
 - [Screencast CI/CD](https://www.youtube.com/watch?v=7XpDdjVFH94)
-- [Screencast WebApp]()
-- [Screencast Prótotipo de Baixa Fidelidade]()
-- [Screencast Testes Automatizados]()
+- [Screencast WebApp]() FALTANDO
+- [Screencast Prótotipo de Baixa Fidelidade]() FALTANDO
+- [Screencast Testes Automatizados]() FALTANDO
 - [Relatório da Programação em Par](https://docs.google.com/document/d/16EpwHZ0OlmUOi7epajKD1i2yXCiQcODgXIGaLA9vPCc/edit?usp=sharing)
 
 Quadro Jira:
