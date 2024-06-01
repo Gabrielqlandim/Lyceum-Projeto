@@ -44,7 +44,7 @@ O Study School é um projeto Django que visa criar uma plataforma de gerenciamen
 - [Screen Cast Testes Automatizados](https://youtu.be/xu9nKGfMLQ8).
 
 ## Entrega 04
-- [Diagrama de Atividades]() FALTANDO
+- [Diagrama de Atividades](https://miro.com/app/board/uXjVKMDPzF4=/)
 - [Screencast CI/CD](https://www.youtube.com/watch?v=7XpDdjVFH94)
 - [Screencast WebApp]() FALTANDO
 - [Screencast Prótotipo de Baixa Fidelidade]() FALTANDO
