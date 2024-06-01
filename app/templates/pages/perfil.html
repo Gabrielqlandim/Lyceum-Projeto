@@ -101,16 +101,6 @@
             background-color: var(--body-color);
         }
 
-        
-        #header {
-            padding: 10px;
-            color: var(--header-color);
-            font-size: 26px;
-            font-family: sans-serif;
-            display: flex;
-            justify-content: space-between;
-        }
-
       
 
         #container {
@@ -178,38 +168,93 @@
         nav a:hover {
             color: rgb(0, 60, 255);
         }
+
+        li {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 18px;
+            color: #ffffff;
+            list-style: none;
+        }
+
+        #header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f8f8f8;
+            position: relative;
+        }
+
+        .user {
+            position: absolute;
+            right: 20px;
+            top: 70px;
+            text-align: right;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 18px;
+            color: white;
+        }
+    
+        @media screen and (max-width: 600px) {
+            .user {
+                display: none;
+            }
+
+            body {
+                font-size: 14px; /* Reduz o tamanho da fonte */
+            }
+        
+            header {
+                padding: 20px; /* Reduz o padding do cabeçalho */
+            }
+        
+            nav ul li {
+                margin-right: 10px; /* Reduz a margem entre os itens do menu */
+            }
+
+            #navbar {
+                height: 175px;
+                font-size: 14px;
+            }
+        
+            .headerlinks {
+                flex-direction: column;
+                align-items: center;
+                margin: 10px 0;
+            }
+        
+            nav ul li {
+                display: block;
+                text-align: center;
+            }
+            
+            #botao {
+                width: 100px;
+            }
+    }
 </style>
 </head>
-
-<body>
-  <br><br>
-  <div id="navbar">
-    <a href="{% url 'home' %}" id="theme">
-        <i class="fa-solid fa-school icon logo"></i>Study School
-    </a>
-    <nav>
-        <ul>
-            <li><a href="{% url 'alunos' %}">Alunos</a></li>
-            <li><a href="{% url 'disciplinas' %}">Disciplinas</a></li>
-            <li><a href="{% url 'calendario_academico' %}">Calendário Acadêmico</a></li>
-            <li><a href="{% url 'perfil' %}">Perfil do professor</a></li>
-        </ul>
-    </nav>
-</div>
 
 <body>
   <div id="navbar">
       <a href="{% url 'home' %}" id="theme">
           <i class="fa-solid fa-school icon logo"></i>Study School
       </a>
+
+      <div class="user">
+        <li>{{request.user.username}}</li>
+        <li>{{request.user.email}}</li>
+    </div>
+    <div class="headerlinks">
       <nav>
           <ul>
               <li><a href="{% url 'alunos' %}">Alunos</a></li>
               <li><a href="{% url 'disciplinas' %}">Disciplinas</a></li>
               <li><a href="{% url 'calendario_academico' %}">Calendário Acadêmico</a></li>
-              <li><a href="{% url 'perfil' %}">Perfil do professor</a></li>
+              <li><a href="{% url 'perfil' %}">{{request.user.username}}</a></li>
           </ul>
       </nav>
+    </div>
   </div>
 
   <form method="POST" action="{% url 'perfil' %}">

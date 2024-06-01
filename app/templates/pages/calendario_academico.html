@@ -46,12 +46,22 @@
         }
 
         #header {
-            padding: 10px;
-            color: var(--header-color);
-            font-size: 26px;
-            font-family: sans-serif;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f8f8f8;
+            position: relative;
+        }
+
+        .user {
+            position: absolute;
+            right: 20px;
+            top: 30px;
+            text-align: right;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 18px;
+            color: white;
         }
 
         #header button {
@@ -230,6 +240,115 @@
         nav a:hover {
             color: rgb(0, 60, 255);
         }
+
+        @media screen and (max-width: 600px) {
+            #container {
+                width: 100%;
+                margin-top: 70px
+            }
+
+            #weekdays {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #weekdays div, .day {
+                width: calc(100% / 7);
+                padding: 5px;
+                height: 75px;
+            }
+
+            #weekdays div {
+                font-size: 10px;
+            }
+
+            .day {
+                margin: 2px;
+            }
+
+            #header {
+                font-size: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #header button {
+                width: 60px;
+                margin: 5px 0;
+            }
+    
+            #weekdays {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            #weekdays div, .day {
+                width: calc(100% / 7);
+                margin: 2px;
+                height: 60px;
+            }
+
+            #buttons {
+                margin-top: 10px;
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            #backButton,
+            #nextButton {
+                font-size: 10px;
+            }
+
+            .day {
+                margin: 2px;
+            }
+
+            #navbar {
+                height: 175px;
+                font-size: 14px;
+            }
+
+            #theme {
+                font-size: 2rem;
+                margin-top: 1rem;
+                margin-bottom: 15px;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 2px 0;
+            }
+
+            #header {
+                font-size: 18px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #header button {
+                width: 50px;
+                margin: 3px 0;
+            }
+
+            #newEventModal, #deleteEventModal {
+                width: 80%;
+                left: 3%;
+                top: 50px;
+                margin-top: 300px;
+            }
+
+            #calendar {
+                width: 110%;
+            }
+
+        }
+    
+        @media screen and (max-width: 600px) {
+            .user {
+                display: none;
+            }
+          }
     </style>
 
     <title>Calendario</title>
@@ -240,12 +359,16 @@
         <a href="{% url 'home' %}" id="theme">
             <i class="fa-solid fa-school icon logo"></i>Study School
         </a>
+        <div class="user">
+            <p>{{request.user.username}}</p>
+            <p color="white">{{request.user.email}}</p>
+        </div>
         <nav>
             <ul>
                 <li><a href="{% url 'alunos' %}">Alunos</a></li>
                 <li><a href="{% url 'disciplinas' %}">Disciplinas</a></li>
                 <li><a href="{% url 'calendario_academico' %}">Calendário Acadêmico</a></li>
-                <li><a href="{% url 'perfil' %}">Perfil do professor</a></li>
+                <li><a href="{% url 'perfil' %}">{{request.user.username}}</a></li>
             </ul>
         </nav>
     </div>
@@ -254,7 +377,7 @@
         <div id="header">
             <div id="monthDisplay"></div>
 
-            <div>
+            <div id="buttons">
                 <button id="backButton">Voltar</button>
                 <button id="nextButton">Próximo</button>
             </div>

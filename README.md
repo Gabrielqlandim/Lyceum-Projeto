@@ -55,6 +55,9 @@ Issue/Bug Tracker:
 Diagrama de Atividades:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/fc079f6c-844d-48c5-832d-1e01b1d4124d)
 
+## Entrega 04
+
+- [Relatório da Programação em Par](https://docs.google.com/document/d/16EpwHZ0OlmUOi7epajKD1i2yXCiQcODgXIGaLA9vPCc/edit?usp=sharing)
 
 ### Instruções de Acesso
 Para acessar e utilizar o Study School, clique no link acima e depois no botão "cadastro" para criar uma conta no sistema. Após isso, você será redirecionado para a página de login, onde deverá preencher suas informações de acordo com o cadastro recém-realizado. Assim, você conseguirá acessar a plataforma do StudySchool com sucesso.

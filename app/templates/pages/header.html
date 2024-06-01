@@ -1,13 +1,59 @@
+<style> 
+    #header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #f8f8f8;
+        position: relative;
+    }
+
+    .user {
+        position: absolute;
+        right: 20px;
+        top: 50px;
+        text-align: right;
+    } 
+
+    .headerlinks nav ul {
+        display: inline;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+    }
+
+    @media screen and (max-width: 600px) {
+        .user {
+            display: none;
+        }
+
+        .headerlinks {
+            display: block;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+        }
+      }
+      
+</style>
+
 <header>
     <a href="{% url 'home' %}" class='logo'>
         <h1><i class="fa-solid fa-school icon"></i>Study School</h1>
     </a>
+
+    <div class="user">
+        <p>{{request.user.username}}</p>
+        <p>{{request.user.email}}</p>
+    </div>
+    <div class="headerlinks">
     <nav>
         <ul>
             <li><a id="aalunos" href="{% url 'alunos' %}">Alunos</a></li>
             <li><a id="adisciplinas" href="{% url 'disciplinas' %}">Disciplinas</a></li>
             <li><a id="acalendario" href="{% url 'calendario_academico' %}">Calendário Acadêmico</a></li>
-            <li><a id="aprofessor" href="{% url 'perfil' %}">Perfil do professor</a></li>
+            <li><a id="aprofessor" href="{% url 'perfil' %}">{{request.user.username}}</a></li>
         </ul>
     </nav>
+    </div>
 </header>

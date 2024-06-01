@@ -7,16 +7,15 @@
             text-align: center;
         }
         .divi{
-            margin: auto;
-            display: inline-flex;
+            justify-content: center;
+            display: flex;
             text-align: center;
-            
+            gap: 20px;
         }
         .grid-home{
             background-color: aqua;
             height: 200px;
             width: 325px;
-            margin-left: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,13 +23,13 @@
         }
     </style>
     {% include "pages/header.html" %} 
-    <h1>Bem-vindo, {{username}}</h1>
+    <h1>Bem-vindo, {{request.user.username}}</h1>
 
     <div class="divi">
         <button class="grid-home" onclick="location.href='{% url 'alunos' %}'" type="button">Alunos</button>
         <button class="grid-home" onclick="location.href='{% url 'disciplinas' %}'" type="button">Disciplinas</button>
         <button class="grid-home" onclick="location.href='{% url 'calendario_academico' %}'" type="button">Calendário Acadêmico</button>
-        <button class="grid-home" onclick="location.href='{% url 'perfil' %}'" type="button">Perfil do professor</button>
+        <button class="grid-home" onclick="location.href='{% url 'perfil' %}'" type="button">{{request.user.username}}</button>
     </div>
     <script src="script.js"></script>
 </body>

@@ -37,9 +37,10 @@ def cadastro_prof(request):
             email = request.POST.get('email')
             senha = request.POST.get('senha')
 
-            user = User.objects.filter(username=name).first()
+            username_check = User.objects.filter(username=name).first()
+            user_email = User.objects.filter(email=email).first()
 
-            if user:
+            if username_check or user_email:
                 return render(request, 'pages/cadastro.html', {'check': 1, 'message':'Usuário já existente.'})
             else:
                 user = User.objects.create_user(username=name,email=email,password=senha)
@@ -54,7 +55,7 @@ def cadastro_prof(request):
 @login_required
 def home(request):
     user = request.user
-    return render(request, 'pages/home.html', {'username': user})
+    return render(request, 'pages/home.html')
 
 # visualizar alunos // cadastrar alunos // criar turma
 @login_required

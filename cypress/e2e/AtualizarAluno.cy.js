@@ -25,16 +25,30 @@ describe('atualizar aluno', () => {
         cy.get('#botao').click();
         
         cy.visit('/alunos/');
+
+        cy.get('[name="criar_turma"]').click();
+        cy.get(':nth-child(4) > .cadastrar_aluno > .container > form > .form-group > #nome-aluno').type('1-A');
+        cy.get('[name="criar_turma_confirmar"]').click();
+
+        cy.get('[name="criar_turma"]').click();
+        cy.get(':nth-child(4) > .cadastrar_aluno > .container > form > .form-group > #nome-aluno').type('2-A');
+        cy.get('[name="criar_turma_confirmar"]').click();
+
+        cy.get('[name="criar_turma"]').click();
+        cy.get(':nth-child(4) > .cadastrar_aluno > .container > form > .form-group > #nome-aluno').type('3-A');
+        cy.get('[name="criar_turma_confirmar"]').click();
+
+
         cy.get('#cadastrar-botao').click();
         cy.get('#nome-aluno').type('123123123');
-        cy.get('#turma-aluno').select('1-A');
+        // cy.get('#turma-aluno').select('1-A');
         cy.get('#data-aluno').click();
         cy.get('#data-aluno').type('2024-04-18');
         cy.get('[name="cadastrar_confirmar"]').click();
 
         cy.get('#cadastrar-botao').click();
         cy.get('#nome-aluno').type('xico ciência');
-        cy.get('#turma-aluno').select('1-A');
+        // cy.get('#turma-aluno').select('1-A');
         cy.get('#data-aluno').click();
         cy.get('#data-aluno').type('2024-04-26');
         cy.get('[name="cadastrar_confirmar"]').click();
@@ -222,6 +236,20 @@ describe('atualizar aluno', () => {
         cy.get(':nth-child(1) > :nth-child(10) > .cadastrar-botao').click();
         cy.get(':nth-child(1) > :nth-child(10) > .cadastrar-botao').click();
         cy.get(':nth-child(1) > :nth-child(10) > .cadastrar-botao').click();
+
+        cy.visit('/alunos/');
+
+        cy.get('[name="apagar_turma"]').click();
+        cy.get(':nth-child(5) > .cadastrar_aluno > .container > form > .form-group > #turma-aluno').select('1-A');
+        cy.get('[name="apagar_turma_confirmar"]').click();
+
+        cy.get('[name="apagar_turma"]').click();
+        cy.get(':nth-child(5) > .cadastrar_aluno > .container > form > .form-group > #turma-aluno').select('2-A');
+        cy.get('[name="apagar_turma_confirmar"]').click();
+
+        cy.get('[name="apagar_turma"]').click();
+        cy.get(':nth-child(5) > .cadastrar_aluno > .container > form > .form-group > #turma-aluno').select('3-A');
+        cy.get('[name="apagar_turma_confirmar"]').click();
     })
     
     after(() => {
@@ -230,7 +258,9 @@ describe('atualizar aluno', () => {
         cy.get('#id_password').type("123");
         cy.get('.submit-row > input').click(); 
         cy.get('.model-user > th > a').click();
-        cy.get(':nth-child(5) > .action-checkbox > .action-select').check();
+        cy.get('#searchbar').type(nome);
+        cy.get('#changelist-search > div > [type="submit"]').click();
+        cy.get('.action-select').click();
         cy.get('select').select('Remover usuários selecionados');
         cy.get('.button').click();
         cy.get('div > [type="submit"]').click();
