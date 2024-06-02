@@ -48,7 +48,7 @@ O Study School é um projeto Django que visa criar uma plataforma de gerenciamen
 - [Screencast CI/CD](https://www.youtube.com/watch?v=7XpDdjVFH94)
 - [Screencast WebApp](https://youtu.be/gtBp8HXcaOw)
 - [Screencast Prótotipo de Baixa Fidelidade]() FALTANDO
-- [Screencast Testes Automatizados]() FALTANDO
+- [Screencast Testes Automatizados](https://youtu.be/FwjaFA3lY5A)
 - [Relatório da Programação em Par](https://docs.google.com/document/d/16EpwHZ0OlmUOi7epajKD1i2yXCiQcODgXIGaLA9vPCc/edit?usp=sharing)
 
 Quadro Jira:
