@@ -1,4 +1,4 @@
-name: Testes 
+name: Testes Automatizados - StudySchool
 
 on:
   push:
@@ -25,8 +25,12 @@ jobs:
       
       - name: Install dependencies
         run: |
+          pip install -r requirements.txt
           npm ci
 
-      - name: Rodar os testes
+      - name: Run local server
         run: |
+          python manage.py migrate
+          python manage.py runserver &
+          sleep 5
           npx cypress run
