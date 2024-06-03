@@ -61,7 +61,7 @@ Issue/Bug Tracker:
 ![image](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142419701/6b472678-528f-4d14-93f3-a7bbf8535c7f)
 
 Diagrama de Atividades:
-![image (2)](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/6736e0c4-6540-413f-b7fb-cc2306e2e223)
+![image (2)](https://github.com/Gabrielqlandim/StudySchool-Projeto/assets/142418286/935527da-093c-4716-95f5-fad344b1cbe8)
 
 
 
